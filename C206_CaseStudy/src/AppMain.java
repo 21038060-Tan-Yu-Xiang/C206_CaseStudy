@@ -23,54 +23,182 @@ public class AppMain {
 			mainMenu();
 			option = Helper.readInt("Enter an option > ");
 			
-			if (option == 1) { //View BOTH bikeList and bikePartList at the same time
-				viewAllBikes(bikeList);
-				viewAllBikeParts(bikePartList);
-			}
-			else if (option == 2) {
-				setHeader("Choose item to add: ");
-				System.out.println("1. Bike");
-				System.out.println("2. Bike Part");
-				int suboption = Helper.readInt("Enter option to select item type > ");
+			if (option == 1) { //Manage Inventory
+				setHeader("Manage Inventory");
+				System.out.println("1. View Inventory");
+				System.out.println("2. Add Item");
+				System.out.println("3. Update Item Information");
+				System.out.println("4. Delete Item");
+				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) {
-					//Add a bike
-					Bike newBike = inputBike();
-					addBike(bikeList, newBike);
-					System.out.println("New bike sucessfully added.");
+					//View BOTH bikeList and bikePartList at the same time
+					viewAllBikes(bikeList);
+					viewAllBikeParts(bikePartList);
 				}
 				else if (suboption == 2) {
-					//Add a bike part
-					BikePart newBikePart = inputBikePart();
-					addBikePart(bikePartList, newBikePart);
-					System.out.println("New bike part sucessfully added.");
+					int itemoption = itemSelect();
+					
+					if (itemoption == 1) {
+						//Add a bike
+						Bike newBike = inputBike();
+						addBike(bikeList, newBike);
+						System.out.println("New bike sucessfully added.");
+					}
+					else if (itemoption == 2) {
+						//Add a bike part
+						BikePart newBikePart = inputBikePart();
+						addBikePart(bikePartList, newBikePart);
+						System.out.println("New bike part sucessfully added.");
+					}
+					else {
+						System.out.println("Invalid selection. Returning to main menu...");
+					}
+				}
+				else if (suboption == 3) {
+					int itemoption = itemSelect();
+					
+					if (itemoption == 1) {
+						//Update a bike
+						viewAllBikes(bikeList);
+						String id = Helper.readString("Enter id to update > ");
+						System.out.println("## Not Coded ##");
+						//TODO: Extra*: Check if id entered exists before updating
+					}
+					else if (itemoption == 2) {
+						//Update a bike part
+						viewAllBikeParts(bikePartList);
+						String id = Helper.readString("Enter id to update > ");
+						System.out.println("## Not Coded ##");
+						//TODO: Extra*: Check if id entered exists before updating
+					}
+					else {
+						System.out.println("Invalid selection. Returning to main menu...");
+					}
+				}
+				else if (suboption == 4) {
+					int itemoption = itemSelect();
+
+					if (itemoption == 1) {
+						// Update a bike
+						viewAllBikes(bikeList);
+						String id = Helper.readString("Enter id to delete > ");
+						System.out.println("## Not Coded ##");
+						// TODO: Extra*: Check if id entered exists in the ArrayList before deleting
+					} else if (itemoption == 2) {
+						// Update a bike part
+						viewAllBikeParts(bikePartList);
+						String id = Helper.readString("Enter id to delete > ");
+						System.out.println("## Not Coded ##");
+						// TODO: Extra*: Check if id entered exists in the ArrayList before deleting
+					}
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 3)  {
-				setHeader("Choose item to update: ");
-				System.out.println("1. Bike");
-				System.out.println("2. Bike Part");
-				int suboption = Helper.readInt("Enter option to select item type > ");
+			else if (option == 2) { //Manage Buyers
+				setHeader("Manage Buyers");
+				System.out.println("1. Register Buyer");
+				System.out.println("2. Update Buyer Information");
+				System.out.println("3. Search Buyer by Name");
+				System.out.println("4. Search Buyer by Phone No");
+				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) {
-					//Update a bike
-					Bike newBike = inputBike();
-					addBike(bikeList, newBike);
-					System.out.println("New bike sucessfully added.");
+					System.out.println("## Not Coded ##");
+					//TODO
 				}
 				else if (suboption == 2) {
-					//Update a bike part
-					BikePart newBikePart = inputBikePart();
-					addBikePart(bikePartList, newBikePart);
-					System.out.println("New bike part sucessfully added.");
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 3) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 4) {
+					System.out.println("## Not Coded ##");
+					//TODO
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
+			else if (option == 3)  { //Manage Appointments
+				setHeader("Manage Appointments");
+				System.out.println("1. Create Appointment");
+				System.out.println("2. View Appointments");
+				System.out.println("3. Update Appointment Information");
+				System.out.println("4. Delete Appointment");
+				System.out.println("5. Search Appointment by Date");
+				System.out.println("6. Search Appointment by Buyer's Name");
+				int suboption = Helper.readInt("Enter an option > ");
+				
+				if (suboption == 1) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 2) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 3) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 4) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 5) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 6) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else {
+					System.out.println("Invalid selection. Returning to main menu...");
+				}
+			}
+			else if (option == 4) { //Manage Feedback
+				setHeader("Manage Feedback");
+				System.out.println("1. Record Feedback");
+				System.out.println("2. View Feedback");
+				System.out.println("3. Respond to Feedback");
+				System.out.println("4. Update Feedback Status");
+				System.out.println("5. Delete Feedback");
+				int suboption = Helper.readInt("Enter an option > ");
+				
+				if (suboption == 1) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 2) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 3) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 4) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else if (suboption == 5) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
+				else {
+					System.out.println("Invalid selection. Returning to main menu...");
+				}
+			}
+			else if (option == 5) { //Quit
+				System.out.println("Thank you for using Biker's Portal.");
+			} 
 			else {
 				System.out.println("Invalid selection. Returning to main menu...");
 			}
@@ -94,8 +222,16 @@ public class AppMain {
 	
 	public static void viewAllBikeParts(ArrayList<BikePart> bikePartList) {
 		setHeader(">> BIKE PART LIST");
-		System.out.println("Not coded: Display all bike parts");
-		//TODO
+		String output = String.format("%-5s %-30s %-10s %-11s %s\n", "ID", " NAME", "PRICE", "AVAILABLE",
+				"CATEGORY");
+
+		for (int i = 0; i < bikePartList.size(); i++) {
+
+			output += String.format("%-6s %-29s %-10s %-11s %s\n", bikePartList.get(i).getId(), bikePartList.get(i).getName(),
+					bikePartList.get(i).getPrice(), showAvailability(bikePartList.get(i).getIsAvailable()),
+					bikePartList.get(i).getCategory());
+		}
+		System.out.println(output);
 	}
 	
 	//======================= Add items ===========================
@@ -147,10 +283,10 @@ public class AppMain {
 		Helper.line(80, "-");
 		System.out.println("BIKER'S PORTAL");
 		Helper.line(80, "-");
-		System.out.println("1. Display Inventory");
-		System.out.println("2. Add item");
-		System.out.println("3. Update item");
-		System.out.println("4. ?");
+		System.out.println("1. Manage Inventory");
+		System.out.println("2. Manage Buyers");
+		System.out.println("3. Manage Appointments");
+		System.out.println("4. Manage Feedback");
 		System.out.println("5. Quit");
 		Helper.line(80, "-");
 	}
@@ -159,5 +295,13 @@ public class AppMain {
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
+	}
+	
+	public static int itemSelect() {
+		setHeader("Choose item: ");
+		System.out.println("1. Bike");
+		System.out.println("2. Bike Part");
+		int itemoption = Helper.readInt("Enter option to select item type > ");
+		return itemoption;
 	}
 }
