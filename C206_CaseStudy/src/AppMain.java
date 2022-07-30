@@ -17,7 +17,7 @@ public class AppMain {
 		bikePartList.add(new BikePart("P002", "Memory Foam Saddle", 159.99, "Seat Saddle"));
 		bikePartList.add(new BikePart("P003", "'I love my bike' Bell", 200.00, "Bicycle Bell"));
 		bikePartList.add(new BikePart("P004", "Tsunami Aluminium Frame", 129.99, "Bike Frame"));
-	
+		
 		int option = 0;
 		while (option != 5) {
 			mainMenu();
