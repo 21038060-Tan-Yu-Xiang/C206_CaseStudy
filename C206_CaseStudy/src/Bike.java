@@ -1,11 +1,17 @@
 
 public class Bike extends Item {
-private String frame;
-private String suspension;
+private String frameMaterial;
 
-	public Bike(String id, String name, double price, int qty, String frame, String suspension) {
-		super(id, name, price, qty);
-		this.frame = frame;
-		this.suspension = suspension;
+	public Bike(String id, String name, double price, String frameMaterial) {
+		super(id, name, price);
+		this.frameMaterial = frameMaterial;
+	}
+
+	public String getFrameMaterial() {
+		return frameMaterial;
+	}
+
+	public void setFrameMaterial(String frameMaterial) {
+		this.frameMaterial = frameMaterial;
 	}
 }
