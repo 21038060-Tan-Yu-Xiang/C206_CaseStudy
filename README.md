@@ -13,7 +13,7 @@ JUnit Coding and Testing Progress for ALL files (0%)</br>
 Application Coding Progress (28%)</br>
 Project Paperwork (15%)</br>
 
-Application Features: 
+Application Features: </br>
 Admin - (Create) Register buyer's information</br>
 ~~Admin - (Read) View buyer's information~~</br>
 Admin - (Update) Update buyer's information</br>
