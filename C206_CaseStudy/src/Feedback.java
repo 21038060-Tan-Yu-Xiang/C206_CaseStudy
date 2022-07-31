@@ -5,11 +5,16 @@ private String description;
 private String status;
 private String response;
 
-	public Feedback(String id, String description, String status) {
+	public Feedback(String id, String description) {
 		this.id = id;
 		this.description = description;
-		this.status = status;
+		this.status = "Pending";
 		this.response = "";
+	}
+	
+
+	public String getId() {
+		return id;
 	}
 
 	public String getDescription() {

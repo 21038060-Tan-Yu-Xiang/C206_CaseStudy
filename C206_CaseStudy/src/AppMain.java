@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AppMain {
@@ -6,6 +7,9 @@ public class AppMain {
 		//Initialize
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
+		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
+		ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
+		ArrayList<Feedback> feedbackList = new ArrayList<Feedback>();
 		
 		//Sample Data
 		bikeList.add(new Bike("B001", "eXtreme Mountain Bike", 229.99, "Carbon Fiber"));
@@ -17,6 +21,21 @@ public class AppMain {
 		bikePartList.add(new BikePart("P002", "Memory Foam Saddle", 159.99, "Seat Saddle"));
 		bikePartList.add(new BikePart("P003", "'I love my bike' Bell", 200.00, "Bicycle Bell"));
 		bikePartList.add(new BikePart("P004", "Tsunami Aluminium Frame", 129.99, "Bike Frame"));
+		
+		buyerList.add(new Buyer("B001", "Tom", 99991111));
+		buyerList.add(new Buyer("B002", "Amy", 22223333));
+		buyerList.add(new Buyer("B003", "Mark", 33332222));
+		buyerList.add(new Buyer("B004", "Jerry", 11119999));
+		
+		feedbackList.add(new Feedback("F001", "the order was very slow, i waited for 3 weeks"));
+		feedbackList.add(new Feedback("F002", "hello something is missing from my box"));
+		feedbackList.add(new Feedback("F003", "product received from the seller very quickly"));
+		feedbackList.add(new Feedback("F004", "hi, is P004 still available?"));
+		
+		appointmentList.add(new Appointment("A001", LocalDate.of(2022, 8, 8))); //year, month, day
+		appointmentList.add(new Appointment("A002", LocalDate.of(2022, 10, 23)));
+		appointmentList.add(new Appointment("A003", LocalDate.of(2022, 12, 22)));
+		appointmentList.add(new Appointment("A004", LocalDate.of(2023, 1, 3)));
 		
 		int option = 0;
 		while (option != 5) {
@@ -32,7 +51,6 @@ public class AppMain {
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) {
-					//View BOTH bikeList and bikePartList at the same time
 					viewAllBikes(bikeList);
 					viewAllBikeParts(bikePartList);
 				}
@@ -40,13 +58,11 @@ public class AppMain {
 					int itemoption = itemSelect();
 					
 					if (itemoption == 1) {
-						//Add a bike
 						Bike newBike = inputBike();
 						addBike(bikeList, newBike);
 						System.out.println("New bike sucessfully added.");
 					}
 					else if (itemoption == 2) {
-						//Add a bike part
 						BikePart newBikePart = inputBikePart();
 						addBikePart(bikePartList, newBikePart);
 						System.out.println("New bike part sucessfully added.");
@@ -59,14 +75,12 @@ public class AppMain {
 					int itemoption = itemSelect();
 					
 					if (itemoption == 1) {
-						//Update a bike
 						viewAllBikes(bikeList);
 						String id = Helper.readString("Enter id to update > ");
 						System.out.println("## Not Coded ##");
 						//TODO: Extra*: Check if id entered exists before updating
 					}
 					else if (itemoption == 2) {
-						//Update a bike part
 						viewAllBikeParts(bikePartList);
 						String id = Helper.readString("Enter id to update > ");
 						System.out.println("## Not Coded ##");
@@ -80,13 +94,11 @@ public class AppMain {
 					int itemoption = itemSelect();
 
 					if (itemoption == 1) {
-						// Update a bike
 						viewAllBikes(bikeList);
 						String id = Helper.readString("Enter id to delete > ");
 						System.out.println("## Not Coded ##");
 						// TODO: Extra*: Check if id entered exists in the ArrayList before deleting
 					} else if (itemoption == 2) {
-						// Update a bike part
 						viewAllBikeParts(bikePartList);
 						String id = Helper.readString("Enter id to delete > ");
 						System.out.println("## Not Coded ##");
@@ -97,17 +109,17 @@ public class AppMain {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 2) { //Manage Buyers
-				setHeader("Manage Buyers");
-				System.out.println("1. Register Buyer");
-				System.out.println("2. Update Buyer Information");
-				System.out.println("3. Search Buyer by Name");
-				System.out.println("4. Search Buyer by Phone No");
+			else if (option == 2) { //Manage Buyer Profiles
+				setHeader("Manage Buyer Profiles");
+				System.out.println("1. View Buyer Information");
+				System.out.println("2. Register Buyer");
+				System.out.println("3. Update Buyer Information");
+				System.out.println("4. Search Buyer by Name");
+				System.out.println("5. Search Buyer by Phone No");
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllBuyers(buyerList);
 				}
 				else if (suboption == 2) {
 					System.out.println("## Not Coded ##");
@@ -121,14 +133,18 @@ public class AppMain {
 					System.out.println("## Not Coded ##");
 					//TODO
 				}
+				else if (suboption == 5) {
+					System.out.println("## Not Coded ##");
+					//TODO
+				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
 			else if (option == 3)  { //Manage Appointments
 				setHeader("Manage Appointments");
-				System.out.println("1. Create Appointment");
-				System.out.println("2. View Appointments");
+				System.out.println("1. View Appointments");
+				System.out.println("2. Create Appointment");
 				System.out.println("3. Update Appointment Information");
 				System.out.println("4. Delete Appointment");
 				System.out.println("5. Search Appointment by Date");
@@ -136,8 +152,7 @@ public class AppMain {
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllAppointments(appointmentList);
 				}
 				else if (suboption == 2) {
 					System.out.println("## Not Coded ##");
@@ -165,16 +180,15 @@ public class AppMain {
 			}
 			else if (option == 4) { //Manage Feedback
 				setHeader("Manage Feedback");
-				System.out.println("1. Record Feedback");
-				System.out.println("2. View Feedback");
+				System.out.println("1. View Feedback");
+				System.out.println("2. Record Feedback");
 				System.out.println("3. Respond to Feedback");
 				System.out.println("4. Update Feedback Status");
 				System.out.println("5. Delete Feedback");
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllFeedback(feedbackList);
 				}
 				else if (suboption == 2) {
 					System.out.println("## Not Coded ##");
@@ -205,36 +219,14 @@ public class AppMain {
 		}
 	}
 	
-	//======================= View items =========================
-	public static void viewAllBikes(ArrayList<Bike> bikeList) {
-		setHeader(">> BIKE LIST");
-		String output = String.format("%-5s %-26s %-10s %-11s %s\n", "ID", " NAME", "PRICE", "AVAILABLE","FRAME MATERIAL");
-		
-		for (int i = 0; i < bikeList.size(); i++) {
+	/* ############################
+	 * End of Code
+	 * 
+	 * Method Implementations below
+	 * ############################
+	 */
 
-			output += String.format("%-6s %-25s %-10s %-11s %s\n", bikeList.get(i).getId(),
-					bikeList.get(i).getName(), bikeList.get(i).getPrice(),
-					showAvailability(bikeList.get(i).getIsAvailable()),
-					bikeList.get(i).getFrameMaterial());
-		}
-		System.out.println(output);
-	}
-	
-	public static void viewAllBikeParts(ArrayList<BikePart> bikePartList) {
-		setHeader(">> BIKE PART LIST");
-		String output = String.format("%-5s %-30s %-10s %-11s %s\n", "ID", " NAME", "PRICE", "AVAILABLE",
-				"CATEGORY");
-
-		for (int i = 0; i < bikePartList.size(); i++) {
-
-			output += String.format("%-6s %-29s %-10s %-11s %s\n", bikePartList.get(i).getId(), bikePartList.get(i).getName(),
-					bikePartList.get(i).getPrice(), showAvailability(bikePartList.get(i).getIsAvailable()),
-					bikePartList.get(i).getCategory());
-		}
-		System.out.println(output);
-	}
-	
-	//======================= Add items ===========================
+	//================================ (Create) Bike & Bike Parts ================================
 	public static Bike inputBike() {
 		String id = Helper.readString("Enter id > ");
 		String name = Helper.readString("Enter name > ");
@@ -263,10 +255,85 @@ public class AppMain {
 		bikePartList.add(newBikePart);
 	}
 	
-	//==================== Update items ===========================
+	//================================ (Read) Bike & Bike Parts ==================================
+	public static void viewAllBikes(ArrayList<Bike> bikeList) {
+		setHeader(">> BIKE LIST");
+		String output = String.format("%-5s %-25s %-10s %-11s %s\n", "ID", "NAME", "PRICE", "AVAILABLE","FRAME MATERIAL");
+		
+		for (int i = 0; i < bikeList.size(); i++) {
+
+			output += String.format("%-5s %-25s %-10s %-11s %s\n", bikeList.get(i).getId(),
+					bikeList.get(i).getName(), bikeList.get(i).getPrice(),
+					showAvailability(bikeList.get(i).getIsAvailable()),
+					bikeList.get(i).getFrameMaterial());
+		}
+		System.out.println(output);
+	}
 	
+	public static void viewAllBikeParts(ArrayList<BikePart> bikePartList) {
+		setHeader(">> BIKE PART LIST");
+		String output = String.format("%-5s %-30s %-10s %-11s %s\n", "ID", "NAME", "PRICE", "AVAILABLE",
+				"CATEGORY");
+
+		for (int i = 0; i < bikePartList.size(); i++) {
+
+			output += String.format("%-5s %-30s %-10s %-11s %s\n", bikePartList.get(i).getId(), bikePartList.get(i).getName(),
+					bikePartList.get(i).getPrice(), showAvailability(bikePartList.get(i).getIsAvailable()),
+					bikePartList.get(i).getCategory());
+		}
+		System.out.println(output);
+	}
+	//================================ (Update) Bike & Bike Parts ================================
+	//================================ (Delete) Bike & Bike Parts ================================
+	//================================ (Search) Bike & Bike Parts ================================
 	
-	//================= Check availability ========================
+	//================================ (Create) Buyer Profiles ===================================
+	//================================ (Read) Buyer Profiles =====================================
+	public static void viewAllBuyers(ArrayList<Buyer> buyerList) {
+		setHeader(">> BUYER PROFILES");
+		String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
+
+		for (int i = 0; i < buyerList.size(); i++) {
+
+			output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
+		}
+		System.out.println(output);
+	}
+	//================================ (Update) Buyer Profiles ===================================
+	//================================ (Search) Buyer Profiles ===================================
+	
+	//================================ (Create) Appointment =======================================
+	//================================ (Read) Appointment =========================================
+	public static void viewAllAppointments(ArrayList<Appointment> appointmentList) {
+		setHeader(">> APPOINTMENTS");
+		String output = String.format("%-5s %s\n", "ID", "APPOINTMENT DATE");
+
+		for (int i = 0; i < appointmentList.size(); i++) {
+
+			output += String.format("%-5s %s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate());
+		}
+		System.out.println(output);
+	}
+	//================================ (Update) Appointment =======================================
+	//================================ (Delete) Appointment =======================================
+	//================================ (Search) Appointment =======================================
+	
+	//================================ (Create) Feedback =========================================
+	//================================ (Read) Feedback ===========================================
+	public static void viewAllFeedback(ArrayList<Feedback> feedbackList) {
+		setHeader(">> FEEDBACK LIST");
+		String output = String.format("%-5s %-10s %-50s %s\n", "ID", "STATUS", "FEEDBACK", "RESPONSE");
+
+		for (int i = 0; i < feedbackList.size(); i++) {
+
+			output += String.format("%-5s %-10s %-50s %s\n", feedbackList.get(i).getId(), feedbackList.get(i).getStatus(), feedbackList.get(i).getDescription(), feedbackList.get(i).getResponse());
+		}
+		System.out.println(output);
+	}
+	//================================ (Update) Feedback =========================================
+	//================================ (Delete) Feedback =========================================
+	
+	//================================ Check Availability ========================================
 	public static String showAvailability(boolean isAvailable) {
 		String avail;
 
@@ -277,14 +344,13 @@ public class AppMain {
 		}
 		return avail;
 	}
-	
-	//================= User interface methods ====================
+	//================================ User Interface Methods ====================================
 	private static void mainMenu() {
 		Helper.line(80, "-");
 		System.out.println("BIKER'S PORTAL");
 		Helper.line(80, "-");
 		System.out.println("1. Manage Inventory");
-		System.out.println("2. Manage Buyers");
+		System.out.println("2. Manage Buyer Profiles");
 		System.out.println("3. Manage Appointments");
 		System.out.println("4. Manage Feedback");
 		System.out.println("5. Quit");
