@@ -1,11 +1,11 @@
 ## C206_CaseStudy (Bike Lover's Community)
 
 ### By Team 1
-Tester: Cathryn
-Tester/Designer: Trenyce
-Programmers: Damien and Putri
-Scrum Master: Yu Xiang
-Product Owner: Nimmy Varghese
+Tester: Cathryn</br> 
+Tester/Designer: Trenyce</br> 
+Programmers: Damien and Putri</br> 
+Scrum Master: Yu Xiang</br> 
+Product Owner: Nimmy Varghese</br> 
 # To Submit
 JUnit
 Paperwork (Team and Solo)
