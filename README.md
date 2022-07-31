@@ -1,8 +1,11 @@
 ## C206_CaseStudy (Bike Lover's Community)
 
 ### By Team 1
-
-
+Tester: Cathryn
+Tester/Designer: Trenyce
+Programmers: Damien and Putri
+Scrum Master: Yu Xiang
+Product Owner: Nimmy Varghese
 # To Submit
 JUnit
 Paperwork (Team and Solo)
@@ -38,5 +41,4 @@ Admin - (Read) View list of customer's feedback </br>
 Admin - (Update) Update the status of feedback (solved/pending)</br> 
 Admin - (Delete) Delete the feedback after a certain period of time</br>  
 Admin - Ability to respond to customer's feedback</br> 
- 
 Admin - (Create) Create a reservation for bike/bike parts (Optional)</br> 
