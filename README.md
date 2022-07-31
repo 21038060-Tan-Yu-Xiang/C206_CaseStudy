@@ -7,11 +7,11 @@ Programmers: Damien and Putri</br>
 Scrum Master: Yu Xiang</br> 
 Product Owner: Nimmy Varghese</br> 
 # To Submit
-JUnit
-Paperwork (Team and Solo)
-Application
+JUnit</br> 
+Paperwork (Team and Solo)</br> 
+Application</br> 
 
-## Application Code (updated as of 31/7)
+## Application Code Progress (updated as of 31/7)
 Main Menu to Access these features:</br> 
 Admin - (Create) Register buyer's information</br> 
 ~~Admin - (Read) View buyer's information~~</br> 
