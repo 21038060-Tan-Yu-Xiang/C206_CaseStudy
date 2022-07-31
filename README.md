@@ -9,9 +9,9 @@ Product Owner: Nimmy Varghese</br>
 
 ## Project Progress (updated as of 31/7)
 **[IMPORTANT]** 
-JUnit Coding and Testing Progress for ALL files (0%)
-Application Coding Progress (28%)
-Project Paperwork (15%)
+JUnit Coding and Testing Progress for ALL files (0%)</br>
+Application Coding Progress (28%)</br>
+Project Paperwork (15%)</br>
 
 Application Features: 
 Admin - (Create) Register buyer's information</br>
