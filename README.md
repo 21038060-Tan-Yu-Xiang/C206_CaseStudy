@@ -9,7 +9,7 @@ Paperwork (Team and Solo)
 Application
 
 ## Application Code (updated as of 31/7)
-Main Menu to Access these features: 
+Main Menu to Access these features:</br> 
 Admin - (Create) Register buyer's information
 ~~Admin - (Read) View buyer's information~~
 Admin - (Update) Update buyer's information
