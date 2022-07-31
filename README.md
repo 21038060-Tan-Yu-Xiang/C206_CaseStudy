@@ -6,15 +6,14 @@ Tester/Designer: Trenyce</br>
 Programmers: Damien and Putri</br> 
 Scrum Master: Yu Xiang</br> 
 Product Owner: Nimmy Varghese</br> 
-# To Submit
-JUnit</br> 
-Paperwork (Team and Solo)</br> 
-Application</br> 
 
-## Application Code Progress (updated as of 31/7)
-**[IMPORTANT]** JUnit Testing Progress for ALL files (0%)
+## Project Progress (updated as of 31/7)
+**[IMPORTANT]** 
+JUnit Coding and Testing Progress for ALL files (0%)
+Application Coding Progress (28%)
+Project Paperwork (15%)
 
-Application Feature Progress (28%):</br> 
+Application Features: 
 Admin - (Create) Register buyer's information</br>
 ~~Admin - (Read) View buyer's information~~</br>
 Admin - (Update) Update buyer's information</br>
