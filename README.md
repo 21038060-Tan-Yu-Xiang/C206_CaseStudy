@@ -12,6 +12,8 @@ Paperwork (Team and Solo)</br>
 Application</br> 
 
 ## Application Code Progress (updated as of 31/7)
+**[IMPORTANT]** JUnit Testing Progress for ALL files (0%)
+
 Main Menu to Access these features:</br> 
 Admin - (Create) Register buyer's information</br>
 ~~Admin - (Read) View buyer's information~~</br>
