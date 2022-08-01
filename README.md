@@ -7,7 +7,7 @@ Programmers: Damien and Putri</br>
 Scrum Master: Yu Xiang</br> 
 Product Owner: Nimmy Varghese</br> 
 
-## Project Progress (updated as of 31/7)
-JUnit Coding and Testing Progress for ALL files (0%)</br>
-Application Coding Progress (57%)</br>
-Project Paperwork (15%)</br>
+## Project Deliverables (Check telegram for latest updates)
+JUnit Testing for ALL methods </br>
+Application Code
+Project Paperwork
