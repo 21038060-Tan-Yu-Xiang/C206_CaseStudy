@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class AppMain {
 	public static void main(String[] args) {
 		
-		//Initialize arraylist 
+		//TODO: Add RegEx for appointment date
+		
+		//Initialize Array List 
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
 		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
@@ -43,7 +45,7 @@ public class AppMain {
 			mainMenu();
 			option = Helper.readInt("Enter an option > ");
 			
-			if (option == 1) { //Manage Inventory
+			if (option == 1) { //////////////////// Manage Inventory (Done)
 				setHeader("Manage Inventory");
 				System.out.println("1. View Inventory");
 				System.out.println("2. Add Item");
@@ -51,14 +53,14 @@ public class AppMain {
 				System.out.println("4. Delete Item");
 				int suboption = Helper.readInt("Enter an option > ");
 				
-				if (suboption == 1) {
+				if (suboption == 1) { //Verified
 					viewAllBikes(bikeList);
 					viewAllBikeParts(bikePartList);
 				}
-				else if (suboption == 2) {
+				else if (suboption == 2) { //Verified
 					int itemoption = itemSelect();
 					
-					if (itemoption == 1) {
+					if (itemoption == 1) { 
 						Bike newBike = inputBike();
 						addBike(bikeList, newBike);
 					}
@@ -70,7 +72,7 @@ public class AppMain {
 						System.out.println("Invalid selection. Returning to main menu...");
 					}
 				}
-				else if (suboption == 3) {
+				else if (suboption == 3) { //Verified
 					int itemoption = itemSelect();
 					
 					if (itemoption == 1) {
@@ -80,13 +82,12 @@ public class AppMain {
 					else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
 						updateBikePart(bikePartList);
-						//TODO: Extra*: Check if id entered exists before updating
 					}
 					else {
 						System.out.println("Invalid selection. Returning to main menu...");
 					}
 				}
-				else if (suboption == 4) {
+				else if (suboption == 4) { //Verified
 					int itemoption = itemSelect();
 
 					if (itemoption == 1) {
@@ -95,14 +96,13 @@ public class AppMain {
 					} else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
 						deleteBikePart(bikePartList);
-//						System.out.println("## Not Coded ##");
 					}
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 2) { //Manage Buyer Profiles
+			else if (option == 2) { //////////////////// Manage Buyer Profiles
 				setHeader("Manage Buyer Profiles");
 				System.out.println("1. View Buyer Information");
 				System.out.println("2. Register Buyer");
@@ -111,10 +111,10 @@ public class AppMain {
 				System.out.println("5. Search Buyer by Phone No");
 				int suboption = Helper.readInt("Enter an option > ");
 				
-				if (suboption == 1) {
+				if (suboption == 1) { //Verified
 					viewAllBuyers(buyerList);
 				}
-				else if (suboption == 2) {
+				else if (suboption == 2) { //Verified
 					Buyer newBuyer = inputBuyer();
 					addBuyer(buyerList, newBuyer);
 				}
@@ -134,7 +134,7 @@ public class AppMain {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 3)  { //Manage Appointments
+			else if (option == 3)  { //////////////////// Manage Appointments
 				setHeader("Manage Appointments");
 				System.out.println("1. View Appointments");
 				System.out.println("2. Create Appointment");
@@ -144,10 +144,10 @@ public class AppMain {
 				System.out.println("6. Search Appointment by Buyer's Name");
 				int suboption = Helper.readInt("Enter an option > ");
 				
-				if (suboption == 1) {
+				if (suboption == 1) { //Verified
 					viewAllAppointments(appointmentList);
 				}
-				else if (suboption == 2) {
+				else if (suboption == 2) { //Verified
 					Appointment newAppointment = inputAppointment();
 					addAppointment(appointmentList, newAppointment);
 				}
@@ -171,7 +171,7 @@ public class AppMain {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 4) { //Manage Feedback
+			else if (option == 4) { //////////////////// Manage Feedback
 				setHeader("Manage Feedback");
 				System.out.println("1. View Feedback");
 				System.out.println("2. Record Feedback");
@@ -180,10 +180,10 @@ public class AppMain {
 				System.out.println("5. Delete Feedback");
 				int suboption = Helper.readInt("Enter an option > ");
 				
-				if (suboption == 1) {
+				if (suboption == 1) { //Verified
 					viewAllFeedback(feedbackList);
 				}
-				else if (suboption == 2) {
+				else if (suboption == 2) { //Verified
 					Feedback newFeedback = inputFeedback();
 					addFeedback(feedbackList, newFeedback);
 				}
@@ -280,50 +280,79 @@ public class AppMain {
 	}
 	//================================ (Update) Bike & Bike Parts ================================
 	public static void updateBike(ArrayList<Bike> bikeList) {
-		String id = Helper.readString("enter id to update > ");
-		String name = Helper.readString("enter name to update > ");
-		double price = Helper.readDouble("enter price to update > ");
-		char availability = Helper.readChar("enter availability > (y/n) ");
-		String frameMaterial = Helper.readString("enter frame material > ");
+		String id = Helper.readString("Enter id to update > ");
 		
+		boolean noResult = true; //Search if id exists first
 		for (int i = 0; i < bikeList.size(); i++) {
-			if(bikeList.get(i).getId().equals(id)) {
-				bikeList.get(i).setName(name);
-				bikeList.get(i).setPrice(price);
-//				bikeList.get(i).setAvailability(availability);
-				bikeList.get(i).setFrameMaterial(frameMaterial);
+			if (bikeList.get(i).getId().equals(id)) {
+				noResult = false;
 			}
-			
-			if(Character.toLowerCase(availability) == 'n'){
-					bikeList.get(i).setIsAvailable(false);
-			}
-			
-		System.out.println("Bike list has been updated!");
-		
 		}
-}
+		
+		if (noResult == false) { // If id found...
+			String name = Helper.readString("Enter name to update > ");
+			double price = Helper.readDouble("Enter price to update > ");
+			char availability = Helper.readChar("Enter availability > (y/n) ");
+			String frameMaterial = Helper.readString("Enter frame material > ");
+			
+			for (int i = 0; i < bikeList.size(); i++) {
+				if (bikeList.get(i).getId().equals(id)) {
+					bikeList.get(i).setName(name);
+					bikeList.get(i).setPrice(price);
+					if (Character.toLowerCase(availability) == 'y') {
+						bikeList.get(i).setIsAvailable(true);
+					}
+					else {
+						if (Character.toLowerCase(availability) == 'n') {
+							bikeList.get(i).setIsAvailable(false);
+						}
+					}
+					bikeList.get(i).setFrameMaterial(frameMaterial);
+				}
+			}
+			System.out.println("Bike List has been updated!");
+		}
+		else { //if id not found...
+			System.out.println("ID entered was not found in the records.");
+		}
+	}
 	
 	
 	public static void updateBikePart(ArrayList<BikePart> bikePartList) {
 		String id = Helper.readString("enter id to update > ");
-		String name = Helper.readString("enter name to update > ");
-		double price = Helper.readDouble("enter price to update > ");
-		char availability = Helper.readChar("enter availability > (y/n) ");
-		String category = Helper.readString("enter category > ");
 		
+		boolean noResult = true; //Search if id exists first
 		for (int i = 0; i < bikePartList.size(); i++) {
-			if(bikePartList.get(i).getId().equals(id)) {
-				bikePartList.get(i).setName(name);
-				bikePartList.get(i).setPrice(price);
-				bikePartList.get(i).setCategory(category);
+			if (bikePartList.get(i).getId().equals(id)) {
+				noResult = false;
 			}
+		}
+		
+		if (noResult == false) { // If id found...
+			String name = Helper.readString("enter name to update > ");
+			double price = Helper.readDouble("enter price to update > ");
+			char availability = Helper.readChar("enter availability > (y/n) ");
+			String category = Helper.readString("enter category > ");
 			
-			if(Character.toLowerCase(availability) == 'n'){
-					bikePartList.get(i).setIsAvailable(false);
+			for (int i = 0; i < bikePartList.size(); i++) {
+				if(bikePartList.get(i).getId().equals(id)) {
+					bikePartList.get(i).setName(name);
+					bikePartList.get(i).setPrice(price);
+					if (Character.toLowerCase(availability) == 'y') {
+						bikePartList.get(i).setIsAvailable(true);
+					}
+					else {
+						if (Character.toLowerCase(availability) == 'n') {
+							bikePartList.get(i).setIsAvailable(false);
+						}
+					}
+					bikePartList.get(i).setCategory(category);
+				}
 			}
-			
-			System.out.println("Bike list has been updated!");
-			
+			System.out.println("Bike Part List has been updated!");
+		}
+		else { //if id not found...
+			System.out.println("ID entered was not found in the records.");
 		}
 	}
 	
@@ -331,42 +360,58 @@ public class AppMain {
 	public static void deleteBike(ArrayList<Bike> bikeList) {
 		String id = Helper.readString("Enter id to delete > ");
 		
+		boolean noResult = true; //Search if id exists first
 		for (int i = 0; i < bikeList.size(); i++) {
-
 			if (bikeList.get(i).getId().equals(id)) {
-				char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");
-				if (Character.toLowerCase(confirm) == 'y') {
-					bikeList.remove(i);
-					System.out.println("Record "+id+" has been deleted.");
-				}
-				else {
-					System.out.println("User has cancelled deletion.");
+				noResult = false;
+			}
+		}
+		
+		if (noResult == false) { // if id found...
+			for (int i = 0; i < bikeList.size(); i++) {
+				if (bikeList.get(i).getId().equals(id)) {
+					char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");
+					if (Character.toLowerCase(confirm) == 'y') {
+						bikeList.remove(i);
+						System.out.println("Record "+id+" has been deleted.");
+					}
+					else {
+						System.out.println("User has cancelled deletion.");
+					}
 				}
 			}
-			else {
-				System.out.println("ID entered was not found in the records.");
-			}
+		}
+		else { //if id not found...
+			System.out.println("ID entered was not found in the records.");
 		}
 	}
 	
 	public static void deleteBikePart(ArrayList<BikePart> bikePartList) {
 		String id = Helper.readString("Enter id to delete > ");
 		
+		boolean noResult = true; //Search if id exists first
 		for (int i = 0; i < bikePartList.size(); i++) {
-
 			if (bikePartList.get(i).getId().equals(id)) {
-				char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");
-				if (Character.toLowerCase(confirm) == 'y') {
-					bikePartList.remove(i);
-					System.out.println("Record "+id+" has been deleted.");
-				}
-				else {
-					System.out.println("User has cancelled deletion.");
+				noResult = false;
+			}
+		}
+		
+		if (noResult == false) { // if id found...
+			for (int i = 0; i < bikePartList.size(); i++) {
+				if (bikePartList.get(i).getId().equals(id)) {
+					char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");
+					if (Character.toLowerCase(confirm) == 'y') {
+						bikePartList.remove(i);
+						System.out.println("Record "+id+" has been deleted.");
+					}
+					else {
+						System.out.println("User has cancelled deletion.");
+					}
 				}
 			}
-			else {
-				System.out.println("ID entered was not found in the records.");
-			}
+		}
+		else { // if id not found...
+			System.out.println("ID entered was not found in the records.");
 		}
 	}
 	
@@ -446,7 +491,7 @@ public class AppMain {
 	//================================ (Create) Feedback =========================================
 	public static Feedback inputFeedback() {
 		String id = Helper.readString("Enter id > ");
-		String description = Helper.readString("Enter feedback >");
+		String description = Helper.readString("Enter feedback > ");
 		
 		Feedback newFeedback = new Feedback(id, description);
 		return newFeedback;
