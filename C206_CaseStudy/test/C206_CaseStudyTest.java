@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class C206_CaseStudyTest {
 	
-	//Initialize
+	//Initialize v
 	private Bike bike1;
 	private Bike bike2;
 	private Bike bike3;
