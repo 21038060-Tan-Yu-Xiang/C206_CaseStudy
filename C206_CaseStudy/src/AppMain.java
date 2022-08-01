@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class AppMain {
 	public static void main(String[] args) {
 		
-		//Initialize arraylis
+		//Initialize arraylist 
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
 		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
