@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class AppMain {
 	public static void main(String[] args) {
 		
-		//Initialize arrayList ok
+		//Initialize arraylist 
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
 		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
@@ -75,12 +75,11 @@ public class AppMain {
 					
 					if (itemoption == 1) {
 						viewAllBikes(bikeList);
-						System.out.println("## Not Coded ##");
-						//TODO: Extra*: Check if id entered exists before updating
+						updateBike(bikeList);
 					}
 					else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
-						System.out.println("## Not Coded ##");
+						updateBikePart(bikePartList);
 						//TODO: Extra*: Check if id entered exists before updating
 					}
 					else {
@@ -96,6 +95,7 @@ public class AppMain {
 					} else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
 						deleteBikePart(bikePartList);
+//						System.out.println("## Not Coded ##");
 					}
 				}
 				else {
@@ -184,8 +184,8 @@ public class AppMain {
 					viewAllFeedback(feedbackList);
 				}
 				else if (suboption == 2) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					Feedback newFeedback = inputFeedback();
+					addFeedback(feedbackList, newFeedback);
 				}
 				else if (suboption == 3) {
 					System.out.println("## Not Coded ##");
@@ -280,20 +280,50 @@ public class AppMain {
 	}
 	//================================ (Update) Bike & Bike Parts ================================
 	public static void updateBike(ArrayList<Bike> bikeList) {
-		String id = Helper.readString("Enter id > ");
-		String name = Helper.readString("Enter name > ");
-		double price = Helper.readDouble("Enter price > ");
-		char availability = Helper.readChar("Enter availability > (y/n)");
-		String frameMaterial = Helper.readString("Enter frame material > ");
+		String id = Helper.readString("enter id to update > ");
+		String name = Helper.readString("enter name to update > ");
+		double price = Helper.readDouble("enter price to update > ");
+		char availability = Helper.readChar("enter availability > (y/n) ");
+		String frameMaterial = Helper.readString("enter frame material > ");
 		
 		for (int i = 0; i < bikeList.size(); i++) {
-			if (bikeList.get(i).getId().equals(id)) {
+			if(bikeList.get(i).getId().equals(id)) {
 				bikeList.get(i).setName(name);
+				bikeList.get(i).setPrice(price);
+//				bikeList.get(i).setAvailability(availability);
+				bikeList.get(i).setFrameMaterial(frameMaterial);
 			}
 			
-			if (Character.toLowerCase(availability) == 'n') {
-				bikeList.get(i).setIsAvailable(false);
+			if(Character.toLowerCase(availability) == 'n'){
+					bikeList.get(i).setIsAvailable(false);
 			}
+			
+		System.out.println("Bike list has been updated!");
+		
+		}
+}
+	
+	
+	public static void updateBikePart(ArrayList<BikePart> bikePartList) {
+		String id = Helper.readString("enter id to update > ");
+		String name = Helper.readString("enter name to update > ");
+		double price = Helper.readDouble("enter price to update > ");
+		char availability = Helper.readChar("enter availability > (y/n) ");
+		String category = Helper.readString("enter category > ");
+		
+		for (int i = 0; i < bikePartList.size(); i++) {
+			if(bikePartList.get(i).getId().equals(id)) {
+				bikePartList.get(i).setName(name);
+				bikePartList.get(i).setPrice(price);
+				bikePartList.get(i).setCategory(category);
+			}
+			
+			if(Character.toLowerCase(availability) == 'n'){
+					bikePartList.get(i).setIsAvailable(false);
+			}
+			
+			System.out.println("Bike list has been updated!");
+			
 		}
 	}
 	
@@ -369,8 +399,16 @@ public class AppMain {
 	}
 	
 	//================================ (Update) Buyer Profiles ===================================
+	public static void updateBuyer(ArrayList<Buyer> buyerList) {
+		String id = Helper.readString("Enter id to update > ");
+		String name = Helper.readString("Enter name to update > ");
+		int phoneNo = Helper.readInt("Enter phone number to update > ");
+		
+//		 not done
+		
+		
+	}
 	//================================ (Search) Buyer Profiles ===================================
-	
 	//================================ (Create) Appointment =======================================
 	public static Appointment inputAppointment() {
 		String id = Helper.readString("Enter id > ");
@@ -402,8 +440,22 @@ public class AppMain {
 	//================================ (Update) Appointment =======================================
 	//================================ (Delete) Appointment =======================================
 	//================================ (Search) Appointment =======================================
+//	cathryn
+
 	
 	//================================ (Create) Feedback =========================================
+	public static Feedback inputFeedback() {
+		String id = Helper.readString("Enter id > ");
+		String description = Helper.readString("Enter feedback >");
+		
+		Feedback newFeedback = new Feedback(id, description);
+		return newFeedback;
+	}
+	
+	public static void addFeedback(ArrayList<Feedback> feedbackList, Feedback newFeedback) {
+		feedbackList.add(newFeedback);
+		System.out.println("New feedback successfully added.");
+	}
 	//================================ (Read) Feedback ===========================================
 	public static void viewAllFeedback(ArrayList<Feedback> feedbackList) {
 		setHeader(">> FEEDBACK LIST");
@@ -417,7 +469,6 @@ public class AppMain {
 	}
 	//================================ (Update) Feedback =========================================
 	//================================ (Delete) Feedback =========================================
-	
 	//================================ Check Availability ========================================
 	public static String showAvailability(boolean isAvailable) {
 		String avail;
