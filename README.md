@@ -9,5 +9,5 @@ Product Owner: Nimmy Varghese</br>
 
 ## Project Progress (updated as of 31/7)
 JUnit Coding and Testing Progress for ALL files (0%)</br>
-Application Coding Progress (28%)</br>
+Application Coding Progress (57%)</br>
 Project Paperwork (15%)</br>
