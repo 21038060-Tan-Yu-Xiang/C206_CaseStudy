@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class AppMain {
 	public static void main(String[] args) {
 		
-		//Initialize arrayList
+		//Initialize arrayList ok
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
 		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
@@ -279,6 +279,24 @@ public class AppMain {
 		System.out.println(output);
 	}
 	//================================ (Update) Bike & Bike Parts ================================
+	public static void updateBike(ArrayList<Bike> bikeList) {
+		String id = Helper.readString("Enter id > ");
+		String name = Helper.readString("Enter name > ");
+		double price = Helper.readDouble("Enter price > ");
+		char availability = Helper.readChar("Enter availability > (y/n)");
+		String frameMaterial = Helper.readString("Enter frame material > ");
+		
+		for (int i = 0; i < bikeList.size(); i++) {
+			if (bikeList.get(i).getId().equals(id)) {
+				bikeList.get(i).setName(name);
+			}
+			
+			if (Character.toLowerCase(availability) == 'n') {
+				bikeList.get(i).setIsAvailable(false);
+			}
+		}
+	}
+	
 	//================================ (Delete) Bike & Bike Parts ================================
 	public static void deleteBike(ArrayList<Bike> bikeList) {
 		String id = Helper.readString("Enter id to delete > ");
