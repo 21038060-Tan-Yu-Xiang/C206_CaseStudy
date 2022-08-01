@@ -13,7 +13,7 @@ Application Coding Progress (28%)</br>
 Project Paperwork (15%)</br>
 
 Application Features: </br>
-Admin - (Create) Register buyer's information</br>
+~~Admin - (Create) Register buyer's information~~</br>
 ~~Admin - (Read) View buyer's information~~</br>
 Admin - (Update) Update buyer's information</br>
 Admin - Search buyer's information by name or phone number</br>
