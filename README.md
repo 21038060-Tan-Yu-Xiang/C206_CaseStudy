@@ -9,5 +9,5 @@ Product Owner: Nimmy Varghese</br>
 
 ## Project Deliverables (Check telegram for latest updates)
 JUnit Testing for ALL methods </br>
-Application Code
-Project Paperwork
+Application Code</br>
+Project Paperwork</br>
