@@ -21,16 +21,16 @@ Admin - Search buyer's information by name or phone number</br>
 ~~Admin - (Create) Add bikes to the bikeList </br>
 Admin - (Read) View bikeList and the bike's specifications~~ </br>
 Admin - (Update) Update bike information </br>
-Admin - (Delete) Delete bike from bikeList </br>
-Bikes - Availability (new attribute)</br>
+~~Admin - (Delete) Delete bike from bikeList ~~</br>
+~~Bikes - Availability (new attribute)~~</br>
  
 ~~Admin - (Create) Add bike parts to the bikePartList </br>
 Admin - (Read) View bikePartList and the part's specifications~~ </br>
 Admin - (Update) Update bike part information </br>
-Admin - (Delete) Delete bike part from bikePartList </br>
-BikeParts - Availability (new attribute)</br>
+~~Admin - (Delete) Delete bike part from bikePartList ~~</br>
+~~BikeParts - Availability (new attribute)~~</br>
  
-Admin - (Create) Create an appointment in the system </br>
+~~Admin - (Create) Create an appointment in the system ~~</br>
 ~~Admin - (Read) View the list of appointments in the system~~ </br>
 Admin - (Update) Update the appointment information </br>
 Admin - (Delete) Delete appointment from system </br>
