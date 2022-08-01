@@ -351,8 +351,16 @@ public class AppMain {
 	}
 	
 	//================================ (Update) Buyer Profiles ===================================
+	public static void updateBuyer(ArrayList<Buyer> buyerList) {
+		String id = Helper.readString("Enter id to update > ");
+		String name = Helper.readString("Enter name to update > ");
+		int phoneNo = Helper.readInt("Enter phone number to update > ");
+		
+//		 not done
+		
+		
+	}
 	//================================ (Search) Buyer Profiles ===================================
-	
 	//================================ (Create) Appointment =======================================
 	public static Appointment inputAppointment() {
 		String id = Helper.readString("Enter id > ");
@@ -384,6 +392,7 @@ public class AppMain {
 	//================================ (Update) Appointment =======================================
 	//================================ (Delete) Appointment =======================================
 	//================================ (Search) Appointment =======================================
+//	cathryn
 
 	
 	//================================ (Create) Feedback =========================================
@@ -412,7 +421,6 @@ public class AppMain {
 	}
 	//================================ (Update) Feedback =========================================
 	//================================ (Delete) Feedback =========================================
-	
 	//================================ Check Availability ========================================
 	public static String showAvailability(boolean isAvailable) {
 		String avail;
