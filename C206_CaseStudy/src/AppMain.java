@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class AppMain {
@@ -60,12 +61,10 @@ public class AppMain {
 					if (itemoption == 1) {
 						Bike newBike = inputBike();
 						addBike(bikeList, newBike);
-						System.out.println("New bike sucessfully added.");
 					}
 					else if (itemoption == 2) {
 						BikePart newBikePart = inputBikePart();
 						addBikePart(bikePartList, newBikePart);
-						System.out.println("New bike part sucessfully added.");
 					}
 					else {
 						System.out.println("Invalid selection. Returning to main menu...");
@@ -76,13 +75,11 @@ public class AppMain {
 					
 					if (itemoption == 1) {
 						viewAllBikes(bikeList);
-						String id = Helper.readString("Enter id to update > ");
 						System.out.println("## Not Coded ##");
 						//TODO: Extra*: Check if id entered exists before updating
 					}
 					else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
-						String id = Helper.readString("Enter id to update > ");
 						System.out.println("## Not Coded ##");
 						//TODO: Extra*: Check if id entered exists before updating
 					}
@@ -95,14 +92,10 @@ public class AppMain {
 
 					if (itemoption == 1) {
 						viewAllBikes(bikeList);
-						String id = Helper.readString("Enter id to delete > ");
-						System.out.println("## Not Coded ##");
-						// TODO: Extra*: Check if id entered exists in the ArrayList before deleting
+						deleteBike(bikeList);
 					} else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
-						String id = Helper.readString("Enter id to delete > ");
-						System.out.println("## Not Coded ##");
-						// TODO: Extra*: Check if id entered exists in the ArrayList before deleting
+						deleteBikePart(bikePartList);
 					}
 				}
 				else {
@@ -122,8 +115,8 @@ public class AppMain {
 					viewAllBuyers(buyerList);
 				}
 				else if (suboption == 2) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					Buyer newBuyer = inputBuyer();
+					addBuyer(buyerList, newBuyer);
 				}
 				else if (suboption == 3) {
 					System.out.println("## Not Coded ##");
@@ -155,8 +148,8 @@ public class AppMain {
 					viewAllAppointments(appointmentList);
 				}
 				else if (suboption == 2) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					Appointment newAppointment = inputAppointment();
+					addAppointment(appointmentList, newAppointment);
 				}
 				else if (suboption == 3) {
 					System.out.println("## Not Coded ##");
@@ -239,6 +232,7 @@ public class AppMain {
 	
 	public static void addBike(ArrayList<Bike> bikeList, Bike newBike) {
 		bikeList.add(newBike);
+		System.out.println("New bike sucessfully added.");
 	}
 	
 	public static BikePart inputBikePart() {
@@ -253,6 +247,7 @@ public class AppMain {
 	
 	public static void addBikePart(ArrayList<BikePart> bikePartList, BikePart newBikePart) {
 		bikePartList.add(newBikePart);
+		System.out.println("New bike part sucessfully added.");
 	}
 	
 	//================================ (Read) Bike & Bike Parts ==================================
@@ -285,9 +280,64 @@ public class AppMain {
 	}
 	//================================ (Update) Bike & Bike Parts ================================
 	//================================ (Delete) Bike & Bike Parts ================================
-	//================================ (Search) Bike & Bike Parts ================================
+	public static void deleteBike(ArrayList<Bike> bikeList) {
+		String id = Helper.readString("Enter id to delete > ");
+		
+		for (int i = 0; i < bikeList.size(); i++) {
+
+			if (bikeList.get(i).getId().equals(id)) {
+				char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");
+				if (Character.toLowerCase(confirm) == 'y') {
+					bikeList.remove(i);
+					System.out.println("Record "+id+" has been deleted.");
+				}
+				else {
+					System.out.println("User has cancelled deletion.");
+				}
+			}
+			else {
+				System.out.println("ID entered was not found in the records.");
+			}
+		}
+	}
 	
+	public static void deleteBikePart(ArrayList<BikePart> bikePartList) {
+		String id = Helper.readString("Enter id to delete > ");
+		
+		for (int i = 0; i < bikePartList.size(); i++) {
+
+			if (bikePartList.get(i).getId().equals(id)) {
+				char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");
+				if (Character.toLowerCase(confirm) == 'y') {
+					bikePartList.remove(i);
+					System.out.println("Record "+id+" has been deleted.");
+				}
+				else {
+					System.out.println("User has cancelled deletion.");
+				}
+			}
+			else {
+				System.out.println("ID entered was not found in the records.");
+			}
+		}
+	}
+	
+	//================================ (Search) Bike & Bike Parts ================================
 	//================================ (Create) Buyer Profiles ===================================
+	public static Buyer inputBuyer() {
+		String id = Helper.readString("Enter id > ");
+		String name = Helper.readString("Enter name > ");
+		int phoneNo = Helper.readInt("Enter phone number > ");
+
+		Buyer newBuyer = new Buyer(id, name, phoneNo);
+		return newBuyer;
+	}
+	
+	public static void addBuyer(ArrayList<Buyer> buyerList, Buyer newBuyer) {
+		buyerList.add(newBuyer);
+		System.out.println("New buyer sucessfully added.");
+	}
+	
 	//================================ (Read) Buyer Profiles =====================================
 	public static void viewAllBuyers(ArrayList<Buyer> buyerList) {
 		setHeader(">> BUYER PROFILES");
@@ -299,10 +349,27 @@ public class AppMain {
 		}
 		System.out.println(output);
 	}
+	
 	//================================ (Update) Buyer Profiles ===================================
 	//================================ (Search) Buyer Profiles ===================================
 	
 	//================================ (Create) Appointment =======================================
+	public static Appointment inputAppointment() {
+		String id = Helper.readString("Enter id > ");
+		String apptDate = Helper.readString("Enter appointment date (yyyy-MM-dd) > ");
+		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate apptDateLD = LocalDate.parse(apptDate, dtf);
+
+		Appointment newAppointment = new Appointment(id, apptDateLD);
+		return newAppointment;
+	}
+	
+	public static void addAppointment(ArrayList<Appointment> appointmentList, Appointment newAppointment) {
+		appointmentList.add(newAppointment);
+		System.out.println("New appointment sucessfully added.");
+	}
+	
 	//================================ (Read) Appointment =========================================
 	public static void viewAllAppointments(ArrayList<Appointment> appointmentList) {
 		setHeader(">> APPOINTMENTS");
