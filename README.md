@@ -8,7 +8,6 @@ Scrum Master: Yu Xiang</br>
 Product Owner: Nimmy Varghese</br> 
 
 ## Project Progress (updated as of 31/7)
-**[IMPORTANT]**</br> 
 JUnit Coding and Testing Progress for ALL files (0%)</br>
 Application Coding Progress (28%)</br>
 Project Paperwork (15%)</br>
