@@ -75,12 +75,11 @@ public class AppMain {
 					
 					if (itemoption == 1) {
 						viewAllBikes(bikeList);
-						System.out.println("## Not Coded ##");
-						//TODO: Extra*: Check if id entered exists before updating
+						updateBike(bikeList);
 					}
 					else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
-						System.out.println("## Not Coded ##");
+						updateBikePart(bikePartList);
 						//TODO: Extra*: Check if id entered exists before updating
 					}
 					else {
@@ -96,6 +95,7 @@ public class AppMain {
 					} else if (itemoption == 2) {
 						viewAllBikeParts(bikePartList);
 						deleteBikePart(bikePartList);
+//						System.out.println("## Not Coded ##");
 					}
 				}
 				else {
@@ -279,6 +279,54 @@ public class AppMain {
 		System.out.println(output);
 	}
 	//================================ (Update) Bike & Bike Parts ================================
+	public static void updateBike(ArrayList<Bike> bikeList) {
+		String id = Helper.readString("enter id to update > ");
+		String name = Helper.readString("enter name to update > ");
+		double price = Helper.readDouble("enter price to update > ");
+		char availability = Helper.readChar("enter availability > (y/n) ");
+		String frameMaterial = Helper.readString("enter frame material > ");
+		
+		for (int i = 0; i < bikeList.size(); i++) {
+			if(bikeList.get(i).getId().equals(id)) {
+				bikeList.get(i).setName(name);
+				bikeList.get(i).setPrice(price);
+//				bikeList.get(i).setAvailability(availability);
+				bikeList.get(i).setFrameMaterial(frameMaterial);
+			}
+			
+			if(Character.toLowerCase(availability) == 'n'){
+					bikeList.get(i).setIsAvailable(false);
+			}
+			
+		System.out.println("Bike list has been updated!");
+		
+		}
+}
+	
+	
+	public static void updateBikePart(ArrayList<BikePart> bikePartList) {
+		String id = Helper.readString("enter id to update > ");
+		String name = Helper.readString("enter name to update > ");
+		double price = Helper.readDouble("enter price to update > ");
+		char availability = Helper.readChar("enter availability > (y/n) ");
+		String category = Helper.readString("enter category > ");
+		
+		for (int i = 0; i < bikePartList.size(); i++) {
+			if(bikePartList.get(i).getId().equals(id)) {
+				bikePartList.get(i).setName(name);
+				bikePartList.get(i).setPrice(price);
+				bikePartList.get(i).setCategory(category);
+			}
+			
+			if(Character.toLowerCase(availability) == 'n'){
+					bikePartList.get(i).setIsAvailable(false);
+			}
+			
+			System.out.println("Bike list has been updated!");
+			
+		}
+}
+	
 	//================================ (Delete) Bike & Bike Parts ================================
 	public static void deleteBike(ArrayList<Bike> bikeList) {
 		String id = Helper.readString("Enter id to delete > ");
