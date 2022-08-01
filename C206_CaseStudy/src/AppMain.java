@@ -184,8 +184,8 @@ public class AppMain {
 					viewAllFeedback(feedbackList);
 				}
 				else if (suboption == 2) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					Feedback newFeedback = inputFeedback();
+					addFeedback(feedbackList, newFeedback);
 				}
 				else if (suboption == 3) {
 					System.out.println("## Not Coded ##");
@@ -385,7 +385,20 @@ public class AppMain {
 	//================================ (Delete) Appointment =======================================
 	//================================ (Search) Appointment =======================================
 	
+	
 	//================================ (Create) Feedback =========================================
+	public static Feedback inputFeedback() {
+		String id = Helper.readString("Enter id > ");
+		String description = Helper.readString("Enter feedback >");
+		
+		Feedback newFeedback = new Feedback(id, description);
+		return newFeedback;
+	}
+	
+	public static void addFeedback(ArrayList<Feedback> feedbackList, Feedback newFeedback) {
+		feedbackList.add(newFeedback);
+		System.out.println("New feedback successfully added.");
+	}
 	//================================ (Read) Feedback ===========================================
 	public static void viewAllFeedback(ArrayList<Feedback> feedbackList) {
 		setHeader(">> FEEDBACK LIST");
