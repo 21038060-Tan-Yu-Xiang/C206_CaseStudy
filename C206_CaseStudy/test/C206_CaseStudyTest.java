@@ -149,6 +149,70 @@ public class C206_CaseStudyTest {
 		assertSame("Test that the Appointment last added is the same as 4th item of the list?", appt4, appointmentList.get(3));
 	}
 	
+	@Test
+	public void testViewAllBikes() {
+		//Item list is not null, so that we can add a new item
+		assertNotNull("Test if there is a valid Bike arraylist to add to", bikeList);
+		
+		//Test if the list of Bike retrieved from the AppMain is empty
+		assertEquals("Check that bikeList is empty at the start", 0, bikeList.size());
+		
+		//Given an empty list, after adding 4 items, test if the size of the list is 4
+		AppMain.addBike(bikeList, bike1);
+		AppMain.addBike(bikeList, bike2);
+		AppMain.addBike(bikeList, bike3);
+		AppMain.addBike(bikeList, bike4);
+		assertEquals("Test if that Bike arraylist size is 4?", 4, bikeList.size());
+	}
+	
+	@Test
+	public void testViewAllBikeParts() {
+		//Item list is not null, so that we can add a new item
+		assertNotNull("Test if there is a valid Bike Part arraylist to add to", bikePartList);
+		
+		//Test if the list of Bike Part retrieved from the AppMain is empty
+		assertEquals("Check that bikePartList is empty at the start", 0, bikePartList.size());
+		
+		//Given an empty list, after adding 4 items, test if the size of the list is 4
+		AppMain.addBikePart(bikePartList, part1);
+		AppMain.addBikePart(bikePartList, part2);
+		AppMain.addBikePart(bikePartList, part3);
+		AppMain.addBikePart(bikePartList, part4);
+		assertEquals("Test if that Bike arraylist size is 4?", 4, bikePartList.size());
+	}
+	
+	@Test
+	public void testViewAllAppointments() {
+		//Item list is not null, so that we can add a new item
+		assertNotNull("Test if there is a valid Appointment arraylist to add to", appointmentList);
+		
+		//Test if the list of Appointment retrieved from the AppMain is empty
+		assertEquals("Check that appointmentList is empty at the start", 0, appointmentList.size());
+		
+		//Given an empty list, after adding 4 items, test if the size of the list is 4
+		AppMain.addAppointment(appointmentList, appt1);
+		AppMain.addAppointment(appointmentList, appt2);
+		AppMain.addAppointment(appointmentList, appt3);
+		AppMain.addAppointment(appointmentList, appt4);
+		assertEquals("Test if that Appointment arraylist size is 4?", 4, appointmentList.size());
+	}
+	
+	@Test
+	public void testViewAllFeedback() {
+		//Item list is not null, so that we can add a new item
+		assertNotNull("Test if there is a valid Feedback arraylist to add to", feedbackList);
+		
+		//Test if the list of Feedback retrieved from the AppMain is empty
+		assertEquals("Check that feedbackList is empty at the start", 0, feedbackList.size());
+		
+		//Given an empty list, after adding 4 items, test if the size of the list is 4
+		AppMain.addFeedback(feedbackList, feed1);
+		AppMain.addFeedback(feedbackList, feed2);
+		AppMain.addFeedback(feedbackList, feed3);
+		AppMain.addFeedback(feedbackList, feed4);
+		assertEquals("Test if that Feedback arraylist size is 4?", 4, feedbackList.size());
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		bike1 = null;
