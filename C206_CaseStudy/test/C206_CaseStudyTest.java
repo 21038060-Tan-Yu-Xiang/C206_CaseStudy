@@ -80,7 +80,7 @@ public class C206_CaseStudyTest {
 		appointmentList = new ArrayList<Appointment>();
 	}
 	
-//	Master Template (Use Ctrl + / to uncomment) !DO NOT DELETE, FOR COPYING ONLY!
+//	Master Template (Use Control + / to uncomment) !DO NOT DELETE, FOR COPYING ONLY!
 //	@Test
 //	public void test() {
 //		//type here...
