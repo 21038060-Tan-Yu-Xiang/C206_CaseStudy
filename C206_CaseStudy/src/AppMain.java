@@ -120,8 +120,8 @@ public class AppMain {
 					addBuyer(buyerList, newBuyer);
 				}
 				else if (suboption == 3) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllBuyers(buyerList);
+					updateBuyer(buyerList);
 				}
 				else if (suboption == 4) { //Verified
 					searchBuyerById(buyerList);
@@ -446,15 +446,34 @@ public class AppMain {
 		System.out.println(output);
 	}
 	
-	//================================ (Update) Buyer Profiles ===================================
+	//================================ (Update) Buyer Profiles ===================================	
 	public static void updateBuyer(ArrayList<Buyer> buyerList) {
 		String id = Helper.readString("Enter id to update > ");
-		
-		
-		
-		
-		
+
+		boolean noResult = true; // Search if id exists
+		for (int i = 0; i < buyerList.size(); i++) {
+			if (buyerList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+
+		if (noResult == false) { // If id found
+			String name = Helper.readString("Enter name to update > ");
+			int phoneNo = Helper.readInt("Enter phone number to update > ");
+
+			for (int i = 0; i < buyerList.size(); i++) {
+				if (buyerList.get(i).getId().equals(id)) {
+					buyerList.get(i).setName(name);
+					buyerList.get(i).setPhoneNo(phoneNo);
+				}
+			}
+			System.out.println("Buyer profile has been updated!");
+		}
+		else { //if id not found
+			System.out.println("ID entered was not found in the records.");
+		}
 	}
+	
 	//================================ (Search) Buyer Profiles ===================================
 	public static void searchBuyerById(ArrayList<Buyer> buyerList) {
 		
