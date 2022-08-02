@@ -35,10 +35,10 @@ public class AppMain {
 		feedbackList.add(new Feedback("F003", "product received from the seller very quickly"));
 		feedbackList.add(new Feedback("F004", "hi, is P004 still available?"));
 		
-		appointmentList.add(new Appointment("A001", LocalDate.of(2022, 8, 8))); //year, month, day
-		appointmentList.add(new Appointment("A002", LocalDate.of(2022, 10, 23)));
-		appointmentList.add(new Appointment("A003", LocalDate.of(2022, 12, 22)));
-		appointmentList.add(new Appointment("A004", LocalDate.of(2023, 1, 3)));
+		appointmentList.add(new Appointment("A001", LocalDate.of(2022, 8, 8), "Tom")); //year, month, day
+		appointmentList.add(new Appointment("A002", LocalDate.of(2022, 10, 23), "Amy"));
+		appointmentList.add(new Appointment("A003", LocalDate.of(2022, 12, 22), "Mark"));
+		appointmentList.add(new Appointment("A004", LocalDate.of(2023, 1, 3), "Jerry"));
 		
 		int option = 0;
 		while (option != 5) {
@@ -142,8 +142,9 @@ public class AppMain {
 				System.out.println("2. Create Appointment");
 				System.out.println("3. Update Appointment Information");
 				System.out.println("4. Delete Appointment");
-				System.out.println("5. Search Appointment by Date");
-				System.out.println("6. Search Appointment by Buyer's ID");
+				System.out.println("5. Search Appointment by ID");
+				System.out.println("6. Search Appointment by Date");
+				System.out.println("7. Search Appointment by Attendee's Name");
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) { //Verified
@@ -162,10 +163,13 @@ public class AppMain {
 					//TODO
 				}
 				else if (suboption == 5) {
-					searchAppointmentByDate(appointmentList);
+					searchAppointmentByID(appointmentList);
 				}
 				else if (suboption == 6) {
-					searchAppointmentByID(appointmentList);
+					searchAppointmentByDate(appointmentList);
+				}
+				else if (suboption == 7) {
+					searchAppointmentByAttendeeName(appointmentList);
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
@@ -555,11 +559,12 @@ public class AppMain {
 	public static Appointment inputAppointment() {
 		String id = Helper.readString("Enter id > ");
 		String apptDate = Helper.readString("Enter appointment date (yyyy-MM-dd) > ");
+		String attendeeName = Helper.readString("Enter attendee's name > ");
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate apptDateLD = LocalDate.parse(apptDate, dtf);
 
-		Appointment newAppointment = new Appointment(id, apptDateLD);
+		Appointment newAppointment = new Appointment(id, apptDateLD, attendeeName);
 		return newAppointment;
 	}
 	
@@ -571,11 +576,11 @@ public class AppMain {
 	//================================ (Read) Appointment =========================================
 	public static void viewAllAppointments(ArrayList<Appointment> appointmentList) {
 		setHeader(">> APPOINTMENTS");
-		String output = String.format("%-5s %s\n", "ID", "APPOINTMENT DATE");
+		String output = String.format("%-5s %-18s %s\n", "ID", "APPOINTMENT DATE", "ATTENDEE NAME");
 
 		for (int i = 0; i < appointmentList.size(); i++) {
 
-			output += String.format("%-5s %s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate());
+			output += String.format("%-5s %-18s %s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate(), appointmentList.get(i).getAttendeeName());
 		}
 		System.out.println(output);
 	}
@@ -592,40 +597,79 @@ public class AppMain {
 				noResult = false;
 			}
 		}
+		
 		if(noResult == false) {
 			for(int i = 0; i < appointmentList.size(); i++) {
 				if(appointmentList.get(i).getId().equals(id)) {
 					setHeader(">> ID APPOINTMENT");
-					String output = String.format("%-6s %-7s\n", "ID", "APPOINTMENT DATE");
-					output += String.format("%-6s %-7s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate());
+					String output = String.format("%-5s %-18s %s\n", "ID", "APPOINTMENT DATE", "ATTENDEE NAME");
+					output += String.format("%-5s %-18s %s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate(), appointmentList.get(i).getAttendeeName());
 					System.out.println(output);
 				}
 			}
 		}
-		System.out.println("Name entered was not found in the records.");
+		else {
+			System.out.println("ID entered was not found in the records.");
+		}
 	}
 	
 	public static void searchAppointmentByDate(ArrayList<Appointment> appointmentList) {
 		
-		String date = Helper.readString("Enter date to search > ");
+		String date = Helper.readString("Enter date to search (yyyy-MM-dd) > ");
 		
 		boolean noResult = true;
 		for(int i = 0; i < appointmentList.size(); i++) {
-			if(appointmentList.get(i).getApptDate().equals(date)) {
+			LocalDate apptDateLD = appointmentList.get(i).getApptDate();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			String apptDate = apptDateLD.format(dtf);
+			
+			if(apptDate.equals(date)) {
 				noResult = false;
 			}
 		}
+		
 		if(noResult == false) {
 			for(int i = 0; i < appointmentList.size(); i++) {
-				if(appointmentList.get(i).getApptDate().equals(date)) {
-					setHeader(">> DATE APPOINTMENT");
-					String output = String.format("%-6s %-7s\n", "ID", "APPOINTMENT DATE");
-					output += String.format("%-6s %-7s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate());
+				LocalDate apptDateLD = appointmentList.get(i).getApptDate();
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				String apptDate = apptDateLD.format(dtf);
+				
+				if(apptDate.equals(date)) {
+					setHeader(">> ID APPOINTMENT");
+					String output = String.format("%-5s %-18s %s\n", "ID", "APPOINTMENT DATE", "ATTENDEE NAME");
+					output += String.format("%-5s %-18s %s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate(), appointmentList.get(i).getAttendeeName());
 					System.out.println(output);
 				}
 			}
 		}
-		System.out.println("Date entered was not found in the records.");
+		else {
+			System.out.println("Date entered was not found in the records.");
+		}
+	}
+	
+	public static void searchAppointmentByAttendeeName(ArrayList<Appointment> appointmentList) {
+
+		String attendeeName = Helper.readString("Enter attendee's name to search > ");
+
+		boolean noResult = true;
+		for (int i = 0; i < appointmentList.size(); i++) {
+			if (appointmentList.get(i).getAttendeeName().equals(attendeeName)) {
+				noResult = false;
+			}
+		}
+		if (noResult == false) {
+			for (int i = 0; i < appointmentList.size(); i++) {
+				if (appointmentList.get(i).getAttendeeName().equals(attendeeName)) {
+					setHeader(">> DATE APPOINTMENT");
+					String output = String.format("%-5s %-18s %s\n", "ID", "APPOINTMENT DATE", "ATTENDEE NAME");
+					output += String.format("%-5s %-18s %s\n", appointmentList.get(i).getId(),
+							appointmentList.get(i).getApptDate(), appointmentList.get(i).getAttendeeName());
+					System.out.println(output);
+				}
+			}
+		} else {
+			System.out.println("Name entered was not found in the records.");
+		}
 	}
 	//================================ (Create) Feedback =========================================
 	public static Feedback inputFeedback() {

@@ -68,10 +68,10 @@ public class C206_CaseStudyTest {
 		feed3 = new Feedback("F003", "product received from the seller very quickly");
 		feed4 = new Feedback("F004", "hi, is P004 still available?");
 		
-		appt1 = new Appointment("A001", LocalDate.of(2022, 8, 8)); //year, month, day
-		appt2 = new Appointment("A002", LocalDate.of(2022, 10, 23));
-		appt3 = new Appointment("A003", LocalDate.of(2022, 12, 22));
-		appt4 = new Appointment("A004", LocalDate.of(2023, 1, 3));
+		appt1 = new Appointment("A001", LocalDate.of(2022, 8, 8), "Tom"); //year, month, day
+		appt2 = new Appointment("A002", LocalDate.of(2022, 10, 23), "Amy");
+		appt3 = new Appointment("A003", LocalDate.of(2022, 12, 22), "Mark");
+		appt4 = new Appointment("A004", LocalDate.of(2023, 1, 3), "Jerry");
 		
 		bikeList = new ArrayList<Bike>();
 		bikePartList = new ArrayList<BikePart>();
