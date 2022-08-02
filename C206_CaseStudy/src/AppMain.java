@@ -123,8 +123,7 @@ public class AppMain {
 					//TODO
 				}
 				else if (suboption == 4) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					searchBuyerByName(buyerList);
 				}
 				else if (suboption == 5) {
 					System.out.println("## Not Coded ##");
@@ -446,21 +445,37 @@ public class AppMain {
 	//================================ (Update) Buyer Profiles ===================================
 	public static void updateBuyer(ArrayList<Buyer> buyerList) {
 		String id = Helper.readString("Enter id to update > ");
-		String name = Helper.readString("Enter name to update > ");
-		int phoneNo = Helper.readInt("Enter phone number to update > ");
 		
-//		 not done
+		
+		
 		
 		
 	}
 	//================================ (Search) Buyer Profiles ===================================
-	public  static void searcgBuyer(ArrayList<Buyer> buyerList) {
+	public  static void searchBuyerByName(ArrayList<Buyer> buyerList) {
 		
-		String id = Helper.readString("Enter id to search > ");
-		String name = Helper.readString("Enter name to searcg > ");
-		int phoneNo = Helper.readInt("Enter phone number to search > ");
-	
+		String name = Helper.readString("Enter name to search > ");
 		
+		boolean noResult = true; //Search if name exists first
+		for (int i = 0; i < buyerList.size(); i++) {
+			if (buyerList.get(i).getName().equals(name)) {
+				noResult = false;
+			}
+		}
+		
+		if (noResult == false) { // if name found...
+			for (int i = 0; i < buyerList.size(); i++) {
+				if (buyerList.get(i).getName().equals(name)) {
+					setHeader(">> BUYER PROFILES");
+					String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
+					output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
+					System.out.println(output);
+				}
+			}
+		}
+		else { // if name not found...
+			System.out.println("Name entered was not found in the records.");
+		}
 	}
 //	
 	//================================ (Create) Appointment =======================================
