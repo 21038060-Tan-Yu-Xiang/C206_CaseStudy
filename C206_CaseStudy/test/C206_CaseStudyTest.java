@@ -213,6 +213,34 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that Feedback arraylist size is 4?", 4, feedbackList.size());
 	}
 	
+	@Test
+	public void testDeleteBike() {
+		//Item list is not null, so that we can delete a new item
+		assertNotNull("Test if there is a valid Bike arraylist to delete from", bikeList);
+		
+		//After adding 1 item, test if the size of the list is 1
+		AppMain.addBike(bikeList, bike1);
+		assertEquals("Test if that Bike arraylist size is 1?", 1, bikeList.size());
+		
+		//Delete the item, and test if the size of the list is 0
+		AppMain.deleteBike(bikeList); //Requires user input (B001) in console
+		assertEquals("Test if that Bike arraylist size is 0?", 0, bikeList.size());	
+	}
+	
+	@Test
+	public void testDeleteBikePart() {
+		//Item list is not null, so that we can delete a new item
+		assertNotNull("Test if there is a valid Bike Part arraylist to delete from", bikePartList);
+		
+		//After adding 1 item, test if the size of the list is 1
+		AppMain.addBikePart(bikePartList, part1);
+		assertEquals("Test if that Bike Part arraylist size is 1?", 1, bikePartList.size());
+		
+		//Delete the item, and test if the size of the list is 0
+		AppMain.deleteBikePart(bikePartList); //Requires user input (P001) in console
+		assertEquals("Test if that Bike Part arraylist size is 0?", 0, bikePartList.size());	
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		bike1 = null;
