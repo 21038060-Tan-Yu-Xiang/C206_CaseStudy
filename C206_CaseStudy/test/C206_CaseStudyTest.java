@@ -241,6 +241,24 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that Bike Part arraylist size is 0?", 0, bikePartList.size());	
 	}
 	
+	@Test
+	public void testUpdateBikeInformation() {
+		//type here...
+		assertNotNull("Test if the bike information has been updated from", bikeList.size());
+	}
+	
+	@Test
+	public void testUpdateFeedbackList() {
+		//type here...
+		assertNotNull("Test if the feedback list has been updated from", feedbackList);
+	}
+	
+	@Test
+	public void testSearchBuyerInformation() {
+		//type here...
+		assertNotNull("Test if the buyer information can be searched from", buyerList);
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		bike1 = null;
