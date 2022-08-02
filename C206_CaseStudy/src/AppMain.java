@@ -45,26 +45,26 @@ public class AppMain {
 			mainMenu();
 			option = Helper.readInt("Enter an option > ");
 			
-			if (option == 1) { //////////////////// Manage Inventory (Done)
+			if (option == 1) { //////////////////// Manage Inventory (Unverified: Update BikePartList)
 				setHeader("Manage Inventory");
 				System.out.println("1. View Inventory");
 				System.out.println("2. Add Item");
 				System.out.println("3. Update Item Information");
-				System.out.println("4. Delete Item");
+				System.out.println("4. Delete Item"); 
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) { //Verified
 					viewAllBikes(bikeList);
 					viewAllBikeParts(bikePartList);
 				}
-				else if (suboption == 2) { //Verified
+				else if (suboption == 2) {
 					int itemoption = itemSelect();
 					
-					if (itemoption == 1) { 
+					if (itemoption == 1) { //Verified
 						Bike newBike = inputBike();
 						addBike(bikeList, newBike);
 					}
-					else if (itemoption == 2) {
+					else if (itemoption == 2) { //Verified
 						BikePart newBikePart = inputBikePart();
 						addBikePart(bikePartList, newBikePart);
 					}
@@ -72,14 +72,14 @@ public class AppMain {
 						System.out.println("Invalid selection. Returning to main menu...");
 					}
 				}
-				else if (suboption == 3) { //Verified
+				else if (suboption == 3) {
 					int itemoption = itemSelect();
 					
-					if (itemoption == 1) {
+					if (itemoption == 1) { //Verified
 						viewAllBikes(bikeList);
 						updateBike(bikeList);
 					}
-					else if (itemoption == 2) {
+					else if (itemoption == 2) { 
 						viewAllBikeParts(bikePartList);
 						updateBikePart(bikePartList);
 					}
@@ -87,13 +87,13 @@ public class AppMain {
 						System.out.println("Invalid selection. Returning to main menu...");
 					}
 				}
-				else if (suboption == 4) { //Verified
+				else if (suboption == 4) { 
 					int itemoption = itemSelect();
 
-					if (itemoption == 1) {
+					if (itemoption == 1) { //Verified
 						viewAllBikes(bikeList);
 						deleteBike(bikeList);
-					} else if (itemoption == 2) {
+					} else if (itemoption == 2) { //Verified
 						viewAllBikeParts(bikePartList);
 						deleteBikePart(bikePartList);
 					}
@@ -102,13 +102,13 @@ public class AppMain {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 2) { //////////////////// Manage Buyer Profiles
+			else if (option == 2) { //////////////////// Manage Buyer Profiles (Unverified: Update Buyer Information)
 				setHeader("Manage Buyer Profiles");
 				System.out.println("1. View Buyer Information");
 				System.out.println("2. Register Buyer");
 				System.out.println("3. Update Buyer Information");
-				System.out.println("4. Search Buyer by Name");
-				System.out.println("5. Search Buyer by id");
+				System.out.println("4. Search Buyer by ID");
+				System.out.println("5. Search Buyer by Name");
 				System.out.println("6. Search Buyer by Phone No");
 				int suboption = Helper.readInt("Enter an option > ");
 				
@@ -120,19 +120,17 @@ public class AppMain {
 					addBuyer(buyerList, newBuyer);
 				}
 				else if (suboption == 3) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllBuyers(buyerList);
+					updateBuyer(buyerList);
 				}
-				else if (suboption == 4) {
+				else if (suboption == 4) { //Verified
+					searchBuyerById(buyerList);
+				}
+				else if (suboption == 5) { //Verified
 					searchBuyerByName(buyerList);
 				}
-				else if (suboption == 5) {
-					searchBuyerById(buyerList);
-					//TODO
-				}
-				else if (suboption == 6) {
+				else if (suboption == 6) { //Verified
 					searchBuyerByPhoneNo(buyerList);
-					//TODO
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
@@ -145,7 +143,7 @@ public class AppMain {
 				System.out.println("3. Update Appointment Information");
 				System.out.println("4. Delete Appointment");
 				System.out.println("5. Search Appointment by Date");
-				System.out.println("6. Search Appointment by Buyer's Name");
+				System.out.println("6. Search Appointment by Buyer's ID");
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) { //Verified
@@ -164,12 +162,10 @@ public class AppMain {
 					//TODO
 				}
 				else if (suboption == 5) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					searchAppointmentByDate(appointmentList);
 				}
 				else if (suboption == 6) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					searchAppointmentByID(appointmentList);
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
@@ -195,9 +191,9 @@ public class AppMain {
 					System.out.println("## Not Coded ##");
 					//TODO
 				}
-				else if (suboption == 4) {
-					System.out.println("## Not Coded ##");
-					//TODO
+				else if (suboption == 4) { //Verified
+					viewAllFeedback(feedbackList);
+					updateFeedbackStatus(feedbackList);
 				}
 				else if (suboption == 5) {
 					System.out.println("## Not Coded ##");
@@ -283,7 +279,7 @@ public class AppMain {
 		System.out.println(output);
 	}
 	//================================ (Update) Bike & Bike Parts ================================
-	public static void updateBike(ArrayList<Bike> bikeList) {
+	public static void updateBike(ArrayList<Bike> bikeList) {  
 		String id = Helper.readString("Enter id to update > ");
 		
 		boolean noResult = true; //Search if id exists first
@@ -448,45 +444,38 @@ public class AppMain {
 		System.out.println(output);
 	}
 	
-	//================================ (Update) Buyer Profiles ===================================
+	//================================ (Update) Buyer Profiles ===================================	
 	public static void updateBuyer(ArrayList<Buyer> buyerList) {
 		String id = Helper.readString("Enter id to update > ");
-		
-		
-		
-		
-		
-	}
-	//================================ (Search) Buyer Profiles ===================================
-	public static void searchBuyerByName(ArrayList<Buyer> buyerList) {
 
-		String name = Helper.readString("enter name to search > ");
-
-		boolean noResult = true; //Search if name exists first
+		boolean noResult = true; // Search if id exists
 		for (int i = 0; i < buyerList.size(); i++) {
-			if (buyerList.get(i).getName().equals(name)) {
+			if (buyerList.get(i).getId().equals(id)) {
 				noResult = false;
 			}
 		}
 
-		if (noResult == false) { // if name found...
+		if (noResult == false) { // If id found
+			String name = Helper.readString("Enter name to update > ");
+			int phoneNo = Helper.readInt("Enter phone number to update > ");
+
 			for (int i = 0; i < buyerList.size(); i++) {
-				if (buyerList.get(i).getName().equals(name)) {
-					setHeader(">> BUYER PROFILES");
-					String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
-					output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
-					System.out.println(output);
+				if (buyerList.get(i).getId().equals(id)) {
+					buyerList.get(i).setName(name);
+					buyerList.get(i).setPhoneNo(phoneNo);
 				}
 			}
+			System.out.println("Buyer profile has been updated!");
 		}
-		else { // if name not found...
-			System.out.println("name entered was not found in the records.");
+		else { //if id not found
+			System.out.println("ID entered was not found in the records.");
 		}
 	}
 	
+	//================================ (Search) Buyer Profiles ===================================
 	public static void searchBuyerById(ArrayList<Buyer> buyerList) {
 		
-		String id = Helper.readString("enter id to search > ");
+		String id = Helper.readString("Enter id to search > ");
 		
 		boolean noResult = true; //Search if id exists first
 		for (int i = 0; i < buyerList.size(); i++) {
@@ -506,13 +495,39 @@ public class AppMain {
 			}
 		}
 		else { // if id not found...
-			System.out.println("id entered was not found in the records.");
+			System.out.println("ID entered was not found in the records.");
+		}
+	}
+	
+	public static void searchBuyerByName(ArrayList<Buyer> buyerList) {
+
+		String name = Helper.readString("Enter name to search > ");
+
+		boolean noResult = true; //Search if name exists first
+		for (int i = 0; i < buyerList.size(); i++) {
+			if (buyerList.get(i).getName().equals(name)) {
+				noResult = false;
+			}
+		}
+
+		if (noResult == false) { // if name found...
+			for (int i = 0; i < buyerList.size(); i++) {
+				if (buyerList.get(i).getName().equals(name)) {
+					setHeader(">> BUYER PROFILES");
+					String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
+					output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
+					System.out.println(output);
+				}
+			}
+		}
+		else { // if name not found...
+			System.out.println("Name entered was not found in the records.");
 		}
 	}
 	
 	public static void searchBuyerByPhoneNo(ArrayList<Buyer> buyerList) {
 		
-		int phoneNo = Helper.readInt("enter phone number to search > ");
+		int phoneNo = Helper.readInt("Enter phone number to search > ");
 		
 		boolean noResult = true; //Search if phone no. exists first
 		for (int i = 0; i < buyerList.size(); i++) {
@@ -532,7 +547,7 @@ public class AppMain {
 			}
 		}
 		else { // if phone no. not found...
-			System.out.println("phone no. entered was not found in the records.");
+			System.out.println("Phone number entered was not found in the records.");
 		}
 	}
 	
@@ -567,9 +582,51 @@ public class AppMain {
 	//================================ (Update) Appointment =======================================
 	//================================ (Delete) Appointment =======================================
 	//================================ (Search) Appointment =======================================
-//	cathryn
-
+	public static void searchAppointmentByID(ArrayList<Appointment> appointmentList) {
+		
+		String id = Helper.readString("Enter id to search > ");
+		
+		boolean noResult = true;
+		for(int i = 0; i < appointmentList.size(); i++) {
+			if(appointmentList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		if(noResult == false) {
+			for(int i = 0; i < appointmentList.size(); i++) {
+				if(appointmentList.get(i).getId().equals(id)) {
+					setHeader(">> ID APPOINTMENT");
+					String output = String.format("%-6s %-7s\n", "ID", "APPOINTMENT DATE");
+					output += String.format("%-6s %-7s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate());
+					System.out.println(output);
+				}
+			}
+		}
+		System.out.println("Name entered was not found in the records.");
+	}
 	
+	public static void searchAppointmentByDate(ArrayList<Appointment> appointmentList) {
+		
+		String date = Helper.readString("Enter date to search > ");
+		
+		boolean noResult = true;
+		for(int i = 0; i < appointmentList.size(); i++) {
+			if(appointmentList.get(i).getApptDate().equals(date)) {
+				noResult = false;
+			}
+		}
+		if(noResult == false) {
+			for(int i = 0; i < appointmentList.size(); i++) {
+				if(appointmentList.get(i).getApptDate().equals(date)) {
+					setHeader(">> DATE APPOINTMENT");
+					String output = String.format("%-6s %-7s\n", "ID", "APPOINTMENT DATE");
+					output += String.format("%-6s %-7s\n", appointmentList.get(i).getId(), appointmentList.get(i).getApptDate());
+					System.out.println(output);
+				}
+			}
+		}
+		System.out.println("Date entered was not found in the records.");
+	}
 	//================================ (Create) Feedback =========================================
 	public static Feedback inputFeedback() {
 		String id = Helper.readString("Enter id > ");
@@ -595,8 +652,8 @@ public class AppMain {
 		System.out.println(output);
 	}
 	//================================ (Update) Feedback =========================================
-	public static void updateFeedback(ArrayList<Feedback> feedbackList) {
-		String id = Helper.readString("enter id to update > ");
+	public static void updateFeedbackStatus(ArrayList<Feedback> feedbackList) {
+		String id = Helper.readString("Enter id to update > ");
 		
 		boolean noResult = true; // 
 		for (int i = 0; i < feedbackList.size(); i++) {
@@ -606,19 +663,24 @@ public class AppMain {
 		}
 		
 		if (noResult == false) { //
-			String status = Helper.readString("enter status to update > ");
-			String response = Helper.readString("enter response > ");
+			char status = Helper.readChar("Enter new status (p = Pending/s = Solved) > ");
 			
 			for (int i = 0; i < feedbackList.size(); i++) {
+				
 				if (feedbackList.get(i).getId().equals(id)) {
-					feedbackList.get(i).setStatus(status);
-					feedbackList.get(i).setResponse(response);
+					
+					if (Character.toLowerCase(status) == 's') {
+						feedbackList.get(i).setStatus("Solved");
+					}
+					else {
+						feedbackList.get(i).setStatus("Pending");
+					}
 				}
 			}
-			System.out.println("feedback List has been updated!");
+			System.out.println("Feedback List has been updated!");
 		}
 		else { // 
-			System.out.println("id entered was not found in the records.");
+			System.out.println("ID entered was not found in the records.");
 		}
 	}
 	
