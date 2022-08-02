@@ -129,24 +129,24 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testaddFeedback() {
+	public void testaddAppointment() {
 		//Item list is not null, so that we can add a new item
-		assertNotNull("Test if there is a valid Feedback arraylist to add to", feedbackList);
+		assertNotNull("Test if there is a valid Appointment arraylist to add to", appointmentList);
 		
 		//Adding 1 item, should increase the size of the list to 1
-		AppMain.addFeedback(feedbackList, feed1);
-		assertEquals("Test if that Feedback arraylist size is 1?", 1, feedbackList.size());
+		AppMain.addAppointment(appointmentList, appt1);
+		assertEquals("Test if that Appointment arraylist size is 1?", 1, appointmentList.size());
 		
 		//The item added is same as the first item of the list
-		assertSame("Test that the Feedback added is the same as the 1st item of the list?", feed1, feedbackList.get(0));
+		assertSame("Test that the Appointment added is the same as the 1st item of the list?", appt1, appointmentList.get(0));
 		
 		//Add another 3 items. test The size of the list is 4?
 		//The last item added is the same as the last item of the list?
-		AppMain.addFeedback(feedbackList, feed2);
-		AppMain.addFeedback(feedbackList, feed3);
-		AppMain.addFeedback(feedbackList, feed4);
-		assertEquals("Test that Feedback arraylist size is 4?", 4, feedbackList.size());
-		assertSame("Test that the Feedback last added is the same as 4th item of the list?", feed4, feedbackList.get(3));
+		AppMain.addAppointment(appointmentList, appt2);
+		AppMain.addAppointment(appointmentList, appt3);
+		AppMain.addAppointment(appointmentList, appt4);
+		assertEquals("Test that Appointment arraylist size is 4?", 4, appointmentList.size());
+		assertSame("Test that the Appointment last added is the same as 4th item of the list?", appt4, appointmentList.get(3));
 	}
 	
 	@After
