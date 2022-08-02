@@ -126,7 +126,11 @@ public class AppMain {
 					searchBuyerByName(buyerList);
 				}
 				else if (suboption == 5) {
-					System.out.println("## Not Coded ##");
+					searchBuyerById(buyerList);
+					//TODO
+				}
+				else if (suboption == 6) {
+					searchBuyerByPhoneNo(buyerList);
 					//TODO
 				}
 				else {
@@ -415,6 +419,44 @@ public class AppMain {
 	}
 	
 	//================================ (Search) Bike & Bike Parts ================================
+	
+	//================================ (Create) Buyer Profiles ===================================
+	public static Buyer inputBuyer() {
+		String id = Helper.readString("Enter id > ");
+		String name = Helper.readString("Enter name > ");
+		int phoneNo = Helper.readInt("Enter phone number > ");
+
+		Buyer newBuyer = new Buyer(id, name, phoneNo);
+		return newBuyer;
+	}
+	
+	public static void addBuyer(ArrayList<Buyer> buyerList, Buyer newBuyer) {
+		buyerList.add(newBuyer);
+		System.out.println("New buyer sucessfully added.");
+	}
+	
+	//================================ (Read) Buyer Profiles =====================================
+	public static void viewAllBuyers(ArrayList<Buyer> buyerList) {
+		setHeader(">> BUYER PROFILES");
+		String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
+
+		for (int i = 0; i < buyerList.size(); i++) {
+
+			output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
+		}
+		System.out.println(output);
+	}
+	
+	//================================ (Update) Buyer Profiles ===================================
+	public static void updateBuyer(ArrayList<Buyer> buyerList) {
+		String id = Helper.readString("Enter id to update > ");
+		
+		
+		
+		
+		
+	}
+	//================================ (Search) Buyer Profiles ===================================
 	public static void searchBuyerByName(ArrayList<Buyer> buyerList) {
 
 		String name = Helper.readString("enter name to search > ");
@@ -492,69 +534,7 @@ public class AppMain {
 			System.out.println("phone no. entered was not found in the records.");
 		}
 	}
-	//================================ (Create) Buyer Profiles ===================================
-	public static Buyer inputBuyer() {
-		String id = Helper.readString("Enter id > ");
-		String name = Helper.readString("Enter name > ");
-		int phoneNo = Helper.readInt("Enter phone number > ");
-
-		Buyer newBuyer = new Buyer(id, name, phoneNo);
-		return newBuyer;
-	}
 	
-	public static void addBuyer(ArrayList<Buyer> buyerList, Buyer newBuyer) {
-		buyerList.add(newBuyer);
-		System.out.println("New buyer sucessfully added.");
-	}
-	
-	//================================ (Read) Buyer Profiles =====================================
-	public static void viewAllBuyers(ArrayList<Buyer> buyerList) {
-		setHeader(">> BUYER PROFILES");
-		String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
-
-		for (int i = 0; i < buyerList.size(); i++) {
-
-			output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
-		}
-		System.out.println(output);
-	}
-	
-	//================================ (Update) Buyer Profiles ===================================
-	public static void updateBuyer(ArrayList<Buyer> buyerList) {
-		String id = Helper.readString("Enter id to update > ");
-		
-		
-		
-		
-		
-	}
-	//================================ (Search) Buyer Profiles ===================================
-	public  static void searchBuyerByName(ArrayList<Buyer> buyerList) {
-		
-		String name = Helper.readString("Enter name to search > ");
-		
-		boolean noResult = true; //Search if name exists first
-		for (int i = 0; i < buyerList.size(); i++) {
-			if (buyerList.get(i).getName().equals(name)) {
-				noResult = false;
-			}
-		}
-		
-		if (noResult == false) { // if name found...
-			for (int i = 0; i < buyerList.size(); i++) {
-				if (buyerList.get(i).getName().equals(name)) {
-					setHeader(">> BUYER PROFILES");
-					String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
-					output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
-					System.out.println(output);
-				}
-			}
-		}
-		else { // if name not found...
-			System.out.println("Name entered was not found in the records.");
-		}
-	}
-//	
 	//================================ (Create) Appointment =======================================
 	public static Appointment inputAppointment() {
 		String id = Helper.readString("Enter id > ");
