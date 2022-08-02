@@ -108,7 +108,8 @@ public class AppMain {
 				System.out.println("2. Register Buyer");
 				System.out.println("3. Update Buyer Information");
 				System.out.println("4. Search Buyer by Name");
-				System.out.println("5. Search Buyer by Phone No");
+				System.out.println("5. Search Buyer by id");
+				System.out.println("6. Search Buyer by Phone No");
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) { //Verified
@@ -496,7 +497,7 @@ public class AppMain {
 
 		if (noResult == false) { // if name found...
 			for (int i = 0; i < buyerList.size(); i++) {
-				if (buyerList.get(i).getName().equals(id)) {
+				if (buyerList.get(i).getId().equals(id)) {
 					setHeader(">> BUYER PROFILES");
 					String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
 					output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
@@ -511,18 +512,18 @@ public class AppMain {
 	
 	public static void searchBuyerByPhoneNo(ArrayList<Buyer> buyerList) {
 		
-		String phoneNo = Helper.readString("enter phone number to search > ");
+		int phoneNo = Helper.readInt("enter phone number to search > ");
 		
 		boolean noResult = true; //Search if phone no. exists first
 		for (int i = 0; i < buyerList.size(); i++) {
-			if (buyerList.get(i).getId().equals(phoneNo)) {
+			if (buyerList.get(i).getPhoneNo() == (phoneNo)) {
 				noResult = false;
 			}
 		}
 
 		if (noResult == false) { // if phone no. found...
 			for (int i = 0; i < buyerList.size(); i++) {
-				if (buyerList.get(i).getName().equals(phoneNo)) {
+				if (buyerList.get(i).getPhoneNo() == (phoneNo)) {
 					setHeader(">> BUYER PROFILES");
 					String output = String.format("%-6s %-7s %s\n", "ID", "NAME", "PHONE NO.");
 					output += String.format("%-6s %-7s %s\n", buyerList.get(i).getId(), buyerList.get(i).getName(), buyerList.get(i).getPhoneNo());
