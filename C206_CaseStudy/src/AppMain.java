@@ -595,6 +595,33 @@ public class AppMain {
 		System.out.println(output);
 	}
 	//================================ (Update) Feedback =========================================
+	public static void updateFeedback(ArrayList<Feedback> feedbackList) {
+		String id = Helper.readString("enter id to update > ");
+		
+		boolean noResult = true; // 
+		for (int i = 0; i < feedbackList.size(); i++) {
+			if (feedbackList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		
+		if (noResult == false) { //
+			String status = Helper.readString("enter status to update > ");
+			String response = Helper.readString("enter response > ");
+			
+			for (int i = 0; i < feedbackList.size(); i++) {
+				if (feedbackList.get(i).getId().equals(id)) {
+					feedbackList.get(i).setStatus(status);
+					feedbackList.get(i).setResponse(response);
+				}
+			}
+			System.out.println("feedback List has been updated!");
+		}
+		else { // 
+			System.out.println("id entered was not found in the records.");
+		}
+	}
+	
 	//================================ (Delete) Feedback =========================================
 	//================================ Check Availability ========================================
 	public static String showAvailability(boolean isAvailable) {
