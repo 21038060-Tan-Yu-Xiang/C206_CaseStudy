@@ -98,7 +98,8 @@ public class C206_CaseStudyTest {
 		//The item added is same as the first item of the list
 		assertSame("Test that the bike added is the same as the 1st item of the list?", bike1, bikeList.get(0));
 		
-		//Add another item. test The size of the list is 2?
+		//Add another 3 items. test The size of the list is 4?
+		//The last item added is the same as the last item of the list?
 		AppMain.addBike(bikeList, bike2);
 		AppMain.addBike(bikeList, bike3);
 		AppMain.addBike(bikeList, bike4);
