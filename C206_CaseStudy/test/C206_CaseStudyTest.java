@@ -79,10 +79,31 @@ public class C206_CaseStudyTest {
 		feedbackList = new ArrayList<Feedback>();
 		appointmentList = new ArrayList<Appointment>();
 	}
-
+	
+//	Master Template (Use Ctrl + / to uncomment) !DO NOT DELETE, FOR COPYING ONLY!
+//	@Test
+//	public void test() {
+//		//type here...
+//	}
+	
 	@Test
-	public void test() {
-		//fail("Not yet implemented"); 
+	public void testAddBike() {
+		//Item list is not null, so that we can add a new item
+		assertNotNull("Test if there is a valid Bike arraylist to add to", bikeList);
+		
+		//Adding 1 item, should increase the size of the list to 1
+		AppMain.addBike(bikeList, bike1);
+		assertEquals("Test if that Bike arraylist size is 1?", 1, bikeList.size());
+		
+		//The item added is same as the first item of the list
+		assertSame("Test that the bike added is the same as the 1st item of the list?", bike1, bikeList.get(0));
+		
+		//Add another item. test The size of the list is 2?
+		AppMain.addBike(bikeList, bike2);
+		AppMain.addBike(bikeList, bike3);
+		AppMain.addBike(bikeList, bike4);
+		assertEquals("Test that Bike arraylist size is 4?", 4, bikeList.size());
+		assertSame("Test that the Bike last added is the same as 4th item of the list?", bike4, bikeList.get(3));
 	}
 	
 	@After
