@@ -454,10 +454,15 @@ public class AppMain {
 		
 	}
 	//================================ (Search) Buyer Profiles ===================================
-	//testing
+	public  static void searcgBuyer(ArrayList<Buyer> buyerList) {
+		
+		String id = Helper.readString("Enter id to search > ");
+		String name = Helper.readString("Enter name to searcg > ");
+		int phoneNo = Helper.readInt("Enter phone number to search > ");
 	
-	
-	
+		
+	}
+//	
 	//================================ (Create) Appointment =======================================
 	public static Appointment inputAppointment() {
 		String id = Helper.readString("Enter id > ");
