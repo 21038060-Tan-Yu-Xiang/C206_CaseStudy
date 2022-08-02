@@ -102,7 +102,7 @@ public class AppMain {
 					System.out.println("Invalid selection. Returning to main menu...");
 				}
 			}
-			else if (option == 2) { //////////////////// Manage Buyer Profiles (Unverified: Update Buyer Information)
+			else if (option == 2) { //////////////////// Manage Buyer Profiles (Section Completed)
 				setHeader("Manage Buyer Profiles");
 				System.out.println("1. View Buyer Information");
 				System.out.println("2. Register Buyer");
@@ -119,7 +119,7 @@ public class AppMain {
 					Buyer newBuyer = inputBuyer();
 					addBuyer(buyerList, newBuyer);
 				}
-				else if (suboption == 3) {
+				else if (suboption == 3) { //Verified
 					viewAllBuyers(buyerList);
 					updateBuyer(buyerList);
 				}
@@ -162,13 +162,13 @@ public class AppMain {
 					System.out.println("## Not Coded ##");
 					//TODO
 				}
-				else if (suboption == 5) {
+				else if (suboption == 5) { //Verified
 					searchAppointmentByID(appointmentList);
 				}
-				else if (suboption == 6) {
+				else if (suboption == 6) { //Verified
 					searchAppointmentByDate(appointmentList);
 				}
-				else if (suboption == 7) {
+				else if (suboption == 7) { //Verified
 					searchAppointmentByAttendeeName(appointmentList);
 				}
 				else {
