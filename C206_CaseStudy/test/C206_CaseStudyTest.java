@@ -259,6 +259,27 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if the buyer information can be searched from", buyerList);
 	}
 	
+	@Test
+	public void testCreateCustomerFeedback() {
+		//type here...
+		assertNotNull("Test if customer feedback can be created", feedbackList);
+	}
+	
+	public void testUpdateBuyerInformation() {
+		//type here...
+		assertNotNull("Test if buyer information can be updated", buyerList);
+	}
+	
+	public void testSearchAppointmentByID() {
+		//type here...
+		assertNotNull("Test if appointment can be searched by ID", appointmentList);
+	}
+	
+	public void testSearchAppointmentByDate() {
+		//type here...
+		assertNotNull("Test if appointment can be searched by date", appointmentList);
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		bike1 = null;
