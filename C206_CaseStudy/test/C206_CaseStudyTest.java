@@ -240,13 +240,41 @@ public class C206_CaseStudyTest {
 		AppMain.deleteBikePart(bikePartList); //Requires user input (P001) in console
 		assertEquals("Test if that Bike Part arraylist size is 0?", 0, bikePartList.size());	
 	}
-	
-	@Test
-	public void testUpdateBikeInformation() {
-		//type here...
-		assertNotNull("Test if the bike information has been updated from", bikeList.size());
+	@Test 
+	public void testDeleteAppointment() {
+		// Appointment list is not null, so that we can delete a new appointment 
+		assertNotNull("Test if there is a valid Appointement ArrayList to delete from", appointmentList);
+		
+		//After adding 1 appointment, test if the size of the list is 1
+		AppMain.addAppointment(appointmentList, appt1); 
+		assertEquals("Test if that Appointment ArrayList size is 1?", 1, appointmentList.size());
+		
+		//Delete the item, and test if the size of the list is 0
+		AppMain.deleteAppointment(appointmentList); // Requires user input (A001) in console 
+		assertEquals("Test if that Appointment ArrayList size is 0?", 0, appointmentList.size());	
 	}
 	
+	@Test
+	public void testUpdateBikeInformation() { 
+	
+		assertNotNull("Test if the bike information has been updated from", bikeList.size());
+	}
+	@Test 
+	public void testUpdateBikePartInformation() { 
+		// i haven't complete it yet and resulting in failure due to incomplete codes  - putri 
+		
+		
+		// Bike part list is not null, so that we can update a new bike part information
+		assertNotNull("Test if there is a valid BikePart ArrayList to update information from", bikePartList);
+		
+		//Test if the list of the Bike Part is filled at the start so that there can be an update. 
+		//To have an update, Bike Part list cannot be empty.
+		assertEquals("Check that bikePartList ArrayList is 4 and not empty", 4, bikePartList.size());
+		
+		//Check if the updated information is reflected successfully
+		assertNotNull("Test if the bike part information has been updated from", bikePartList.size());
+		
+	}
 	@Test
 	public void testUpdateFeedbackList() {
 		//type here...
