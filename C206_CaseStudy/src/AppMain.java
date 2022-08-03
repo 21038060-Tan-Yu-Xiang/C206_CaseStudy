@@ -45,7 +45,7 @@ public class AppMain {
 			mainMenu();
 			option = Helper.readInt("Enter an option > ");
 			
-			if (option == 1) { //////////////////// Manage Inventory (Unverified: Update BikePartList)
+			if (option == 1) { //////////////////// Manage Inventory (Section Completed)
 				setHeader("Manage Inventory");
 				System.out.println("1. View Inventory");
 				System.out.println("2. Add Item");
@@ -79,7 +79,7 @@ public class AppMain {
 						viewAllBikes(bikeList);
 						updateBike(bikeList);
 					}
-					else if (itemoption == 2) { 
+					else if (itemoption == 2) { //Verified
 						viewAllBikeParts(bikePartList);
 						updateBikePart(bikePartList);
 					}
@@ -416,8 +416,6 @@ public class AppMain {
 			System.out.println("ID entered was not found in the records.");
 		}
 	}
-	
-	//================================ (Search) Bike & Bike Parts ================================
 	
 	//================================ (Create) Buyer Profiles ===================================
 	public static Buyer inputBuyer() {
