@@ -240,7 +240,16 @@ public class C206_CaseStudyTest {
 		AppMain.deleteBikePart(bikePartList); //Requires user input (P001) in console
 		assertEquals("Test if that Bike Part arraylist size is 0?", 0, bikePartList.size());	
 	}
-	
+	@Test
+	public void testsearchBike() {
+		//bikeList must not be Null, so that we can iterate through the bikeList and find the bike item information
+		assertNotNull("Test if bikeList is not null", bikeList);
+	}
+	@Test
+	public void testsearchBikeParts() {
+		//bikePartList must not be Null, so that we can iterate through the bikePartList and find the bike part item information
+		assertNotNull("Test if bikePartList is not null", bikePartList);
+	}
 	@Test
 	public void testUpdateBikeInformation() {
 		//type here...
