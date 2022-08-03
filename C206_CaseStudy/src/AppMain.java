@@ -451,6 +451,7 @@ public class AppMain {
 			boolean isF2=true;
 			if(bikePartList.get(z).getId()==id) {
 				isF2=true;
+				//What to display after getting bike item info
 				System.out.println("Bike Part ID > " + bikePartList.get(z).getId());
 				System.out.println("Bike Part Name > " + bikePartList.get(z).getName());
 				System.out.println("Bike Part Price > " + bikePartList.get(z).getPrice());
@@ -458,6 +459,7 @@ public class AppMain {
 			}
 			if(bikePartList.get(z).getId()!= id) {
 				isF2= false;
+				//What to display if no such item can be found
 				System.out.println("Bike Part either not found or does not exist");
 			}
 		}

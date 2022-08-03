@@ -242,12 +242,12 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testsearchBike() {
-		//bikeList must not be Null, so that we can iterate through the bikeList and find the bike item information
+		//Test that bikeList must not be Null, so that we can iterate through the bikeList and find the bike item information
 		assertNotNull("Test if bikeList is not null", bikeList);
 	}
 	@Test
 	public void testsearchBikeParts() {
-		//bikePartList must not be Null, so that we can iterate through the bikePartList and find the bike part item information
+		//Test that bikePartList must not be Null, so that we can iterate through the bikePartList and find the bike part item information
 		assertNotNull("Test if bikePartList is not null", bikePartList);
 	}
 	@Test
