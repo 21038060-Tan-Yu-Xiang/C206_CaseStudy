@@ -7,7 +7,7 @@ public class AppMain {
 		
 		//TODO: Add RegEx for appointment dates
 		
-		//Initialize Array List 
+		//Initialize Array Lists
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
 		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
