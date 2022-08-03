@@ -158,9 +158,9 @@ public class AppMain {
 					System.out.println("## Not Coded ##");
 					//TODO
 				}
-				else if (suboption == 4) {
-					System.out.println("## Not Coded ##");
-					//TODO
+				else if (suboption == 4) { // not verified 
+					viewAllAppointments(appointmentList);
+					deleteAppointment(appointmentList);					
 				}
 				else if (suboption == 5) { //Verified
 					searchAppointmentByID(appointmentList);
@@ -320,8 +320,6 @@ public class AppMain {
 			System.out.println("ID entered was not found in the records.");
 		}
 	}
-	
-	
 	public static void updateBikePart(ArrayList<BikePart> bikePartList) {
 		String id = Helper.readString("enter id to update > ");
 		
@@ -586,6 +584,30 @@ public class AppMain {
 	}
 	//================================ (Update) Appointment =======================================
 	//================================ (Delete) Appointment =======================================
+	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
+		String id = Helper.readString("Enter id to delete > ");
+		
+		boolean noResult = true; // search if id exist 
+		for (int i =0; i < appointmentList.size(); i++) {
+			if (appointmentList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		if (noResult == false) { // there is no id found
+			for (int i =0; i < appointmentList.size(); i++) {
+				if (appointmentList.get(i).getId().equals(id)) {
+					char confirm = Helper.readChar("Are you sure you want to delete record " +id+" (y/n) > ");
+					if (Character.toLowerCase(confirm) == 'y') {
+						appointmentList.remove(i);
+						System.out.println("Record " +id+" has been deleted successfully.");
+					} else { 
+						System.out.println("User has cancelled deletion.");
+					}
+				}
+			}
+
+		}
+	}
 	//================================ (Search) Appointment =======================================
 	public static void searchAppointmentByID(ArrayList<Appointment> appointmentList) {
 		
