@@ -107,9 +107,10 @@ public class AppMain {
 				System.out.println("1. View Buyer Information");
 				System.out.println("2. Register Buyer");
 				System.out.println("3. Update Buyer Information");
-				System.out.println("4. Search Buyer by ID");
-				System.out.println("5. Search Buyer by Name");
-				System.out.println("6. Search Buyer by Phone No");
+				System.out.println("4. Delete Buyer Information");
+				System.out.println("5. Search Buyer by ID");
+				System.out.println("6. Search Buyer by Name");
+				System.out.println("7. Search Buyer by Phone No");
 				int suboption = Helper.readInt("Enter an option > ");
 				
 				if (suboption == 1) { //Verified
@@ -124,12 +125,16 @@ public class AppMain {
 					updateBuyer(buyerList);
 				}
 				else if (suboption == 4) { //Verified
-					searchBuyerById(buyerList);
+					viewAllBuyers(buyerList);
+					deleteBuyer(buyerList);
 				}
 				else if (suboption == 5) { //Verified
-					searchBuyerByName(buyerList);
+					searchBuyerById(buyerList);
 				}
 				else if (suboption == 6) { //Verified
+					searchBuyerByName(buyerList);
+				}
+				else if (suboption == 7) { //Verified
 					searchBuyerByPhoneNo(buyerList);
 				}
 				else {
@@ -471,6 +476,34 @@ public class AppMain {
 		}
 	}
 	
+	//================================ (Delete) Buyer Profiles ===================================
+	public static void deleteBuyer(ArrayList<Buyer> buyerList) {
+		String id = Helper.readString("Enter Buyer to delete (by ID) > ");
+
+		boolean noResult = true; // Search if id exists first
+		for (int i = 0; i < buyerList.size(); i++) {
+			if (buyerList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+
+		if (noResult == false) { // if id found...
+			for (int i = 0; i < buyerList.size(); i++) {
+				if (buyerList.get(i).getId().equals(id)) {
+					char confirm = Helper.readChar("Are you sure you want to delete buyer " + id + " (y/n) > ");
+					if (Character.toLowerCase(confirm) == 'y') {
+						buyerList.remove(i);
+						System.out.println("Buyer " + id + " has been deleted.");
+					} else {
+						System.out.println("User has cancelled deletion.");
+					}
+				}
+			}
+		} else { // if id not found...
+			System.out.println("ID entered was not found in the records.");
+		}
+	}
+
 	//================================ (Search) Buyer Profiles ===================================
 	public static void searchBuyerById(ArrayList<Buyer> buyerList) {
 		
