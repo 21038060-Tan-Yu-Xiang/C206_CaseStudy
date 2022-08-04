@@ -155,8 +155,8 @@ public class AppMain {
 					addAppointment(appointmentList, newAppointment);
 				}
 				else if (suboption == 3) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllAppointments(appointmentList);
+					updateAppointment(appointmentList);
 				}
 				else if (suboption == 4) { // not verified 
 					viewAllAppointments(appointmentList);
@@ -192,16 +192,16 @@ public class AppMain {
 					addFeedback(feedbackList, newFeedback);
 				}
 				else if (suboption == 3) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllFeedback(feedbackList);
+					respondCustomerFeedback(feedbackList);
 				}
 				else if (suboption == 4) { //Verified
 					viewAllFeedback(feedbackList);
 					updateFeedbackStatus(feedbackList);
 				}
 				else if (suboption == 5) {
-					System.out.println("## Not Coded ##");
-					//TODO
+					viewAllFeedback(feedbackList);
+					deleteFeedback(feedbackList);
 				}
 				else {
 					System.out.println("Invalid selection. Returning to main menu...");
@@ -416,52 +416,6 @@ public class AppMain {
 			System.out.println("ID entered was not found in the records.");
 		}
 	}
-	//================================ (Search) Bike & Bike Parts ================================
-			public static void searchBike(ArrayList<Bike> bikeList) {
-				String id= Helper.readString("Enter Bike ID to search > ");
-				//Done by Damien
-				// search if id exists for the item
-				//isF stands for is Found?
-				for(int x=0;x<bikeList.size();x++) {
-					boolean isF = false;
-					if(bikeList.get(x).getId()==id) {
-						isF=true;
-						System.out.println("Bike ID > " + bikeList.get(x).getId());
-						System.out.println("Bike Name >" + bikeList.get(x).getName());
-						System.out.println("Bike Frame Material > " + bikeList.get(x).getFrameMaterial());
-						System.out.println("Bike Price" + bikeList.get(x).getPrice());
-						System.out.println("Bike Availability > " + bikeList.get(x).getIsAvailable());
-					}
-					if(bikeList.get(x).getId() != id) {
-						isF=false;
-						System.out.println("Bike not found or does not exist.");
-					}
-				}
-			}
-			public static void sBP(ArrayList<BikePart> bikePartList) {
-				//Done by Damien
-				//sBP stands for Search Bike Parts
-				String id= Helper.readString("Enter Bike Part ID to search > ");
-				//iterate through the arrayList to find the items
-				for(int z=0; z<bikePartList.size();z++) {
-					//isF2 stands for is Found(Second) for Bike Part
-					boolean isF2=true;
-					if(bikePartList.get(z).getId()==id) {
-						isF2=true;
-						//What to display after getting bike item info 
-						System.out.println("Bike Part ID > " + bikePartList.get(z).getId());
-						System.out.println("Bike Part Name > " + bikePartList.get(z).getName());
-						System.out.println("Bike Part Price > " + bikePartList.get(z).getPrice());
-						System.out.println("Bike Part Availability > " + bikePartList.get(z).getIsAvailable());
-					}
-					if(bikePartList.get(z).getId()!= id) {
-						isF2= false;
-						//What to display if no such item can be found
-						System.out.println("Bike Part either not found or does not exist");
-					}
-				}
-			}
-			
 	//================================ (Create) Buyer Profiles ===================================
 	public static Buyer inputBuyer() {
 		String id = Helper.readString("Enter id > ");
@@ -626,6 +580,33 @@ public class AppMain {
 		System.out.println(output);
 	}
 	//================================ (Update) Appointment =======================================
+	public static void updateAppointment(ArrayList<Appointment> appointmentList) {
+		String id= Helper.readString("Enter id to update > ");
+		
+		boolean noResult = true; // search if id exist 
+		for (int i =0; i < appointmentList.size(); i++) {
+			if (appointmentList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		if (noResult == false) { //id found
+			for (int i =0; i < appointmentList.size(); i++) {
+				if (appointmentList.get(i).getId().equals(id)) {
+					String apptDate = Helper.readString("Enter date (yyyy-MM-dd) > ");
+					DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					LocalDate dateLD = LocalDate.parse(apptDate, dtf);
+					String attendeeName = Helper.readString("Enter attendee's name > ");
+					
+					appointmentList.get(i).setApptDate(dateLD);
+					appointmentList.get(i).setAttendeeName(attendeeName);
+					System.out.println("Record " +id+" has been updated successfully.");
+				}
+			}
+		}
+		else {
+			System.out.println("ID entered was not found in the records.");
+		}
+	}
 	//================================ (Delete) Appointment =======================================
 	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
 		String id = Helper.readString("Enter id to delete > ");
@@ -794,6 +775,31 @@ public class AppMain {
 	}
 	
 	//================================ (Delete) Feedback =========================================
+	public static void deleteFeedback(ArrayList<Feedback> feedbackList) {
+		String id = Helper.readString("Enter id to delete > ");
+		boolean noResult = true; // 
+		for (int i = 0; i < feedbackList.size(); i++) {
+			if (feedbackList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		if (noResult == false) {
+			for (int i =0; i < feedbackList.size(); i++) {
+				if (feedbackList.get(i).getId().equals(id)) {
+					char confirm = Helper.readChar("Are you sure you want to delete record " +id+" (y/n) > ");
+					if (Character.toLowerCase(confirm) == 'y') {
+						feedbackList.remove(i);
+						System.out.println("Record " +id+" has been deleted successfully.");
+					} else { 
+						System.out.println("User has cancelled deletion.");
+					}
+				}
+			}
+		}
+		else { // 
+			System.out.println("ID entered was not found in the records.");
+		}
+	}
 	//================================ Check Availability ========================================
 	public static String showAvailability(boolean isAvailable) {
 		String avail;
@@ -804,6 +810,28 @@ public class AppMain {
 			avail = "No";
 		}
 		return avail;
+	}
+	//================================ Respond to Customer's Feedback=============================
+	public static void respondCustomerFeedback(ArrayList<Feedback> feedbackList) {
+		String id = Helper.readString("Enter id to respond > ");
+		boolean noResult = true; //
+		for (int i = 0; i < feedbackList.size(); i++) {
+			if (feedbackList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		if (noResult == false) {
+			for (int i = 0; i < feedbackList.size(); i++) {
+				if (feedbackList.get(i).getId().equals(id)) {
+					String response = Helper.readString("Enter response > ");
+
+					feedbackList.get(i).setResponse(response);
+					System.out.println("You have responded to the Customer Feedback.");
+				}
+			}
+		} else { //
+			System.out.println("ID entered was not found in the records.");
+		}
 	}
 	//================================ User Interface Methods ====================================
 	private static void mainMenu() {
