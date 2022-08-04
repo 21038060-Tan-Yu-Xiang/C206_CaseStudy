@@ -308,6 +308,17 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if appointment can be searched by date", appointmentList);
 	}
 	
+	@Test
+	public void testsearchBike() {
+		//Test that bikeList must not be Null so that we can iterate through the bikeList and find the bike item information
+		assertNotNull("Test if bikeList is not null", bikeList);
+	}
+	@Test
+	public void testsearchBikeParts() {
+		//Test that bikePartList must not be Null so that we can iterate through the bikePartList and find the bike part item information
+		assertNotNull("Test if bikePartList is not null", bikePartList);
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		bike1 = null;
