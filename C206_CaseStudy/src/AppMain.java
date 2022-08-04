@@ -5,9 +5,7 @@ import java.util.ArrayList;
 public class AppMain {
 	public static void main(String[] args) {
 		
-		//TODO: Add RegEx for appointment dates
-		
-		//Initialize Array Lists
+		//Initialize Array List
 		ArrayList<Bike> bikeList = new ArrayList<Bike>();
 		ArrayList<BikePart> bikePartList = new ArrayList<BikePart>();
 		ArrayList<Buyer> buyerList = new ArrayList<Buyer>();
