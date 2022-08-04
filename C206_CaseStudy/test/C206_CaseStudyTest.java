@@ -306,6 +306,13 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if buyer information can be updated", buyerList);
 	}
 	
+	@Test
+	public void testRegisterBuyer() {
+		//type here...
+		// Test that buyer can be registered.
+		assertNotNull("Test if buyer can be registered", buyerList);
+	}
+	
 	public void testSearchAppointmentByID() {
 		//type here...
 		// Test that the appointment by id is inside, reflected when search.
