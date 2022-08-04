@@ -280,33 +280,39 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testUpdateFeedbackList() {
 		//type here...
+		// Test that feedback is not null so that updating a new bike part information is possible.
 		assertNotNull("Test if the feedback list has been updated from", feedbackList);
 	}
 	
 	@Test
 	public void testSearchBuyerInformation() {
 		//type here...
+		// Test that buyer information is inside, reflected when searched.
 		assertNotNull("Test if the buyer information can be searched from", buyerList);
 	}
 	
 	@Test
 	public void testCreateCustomerFeedback() {
 		//type here...
+		// Test that feedback can be created.
 		assertNotNull("Test if customer feedback can be created", feedbackList);
 	}
 	
 	public void testUpdateBuyerInformation() {
 		//type here...
+		// Test that the information is not null, to be updated.
 		assertNotNull("Test if buyer information can be updated", buyerList);
 	}
 	
 	public void testSearchAppointmentByID() {
 		//type here...
+		// Test that the appointment by id is inside, reflected when search.
 		assertNotNull("Test if appointment can be searched by ID", appointmentList);
 	}
 	
 	public void testSearchAppointmentByDate() {
 		//type here...
+		// Test that the appointment by date is inside, reflected when search.
 		assertNotNull("Test if appointment can be searched by date", appointmentList);
 	}
 	
