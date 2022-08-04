@@ -215,7 +215,7 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testDeleteBike() {
-		//Item list is not null, so that we can delete new item
+		//Item list is not null, so that we can delete a new item
 		assertNotNull("Test if there is a valid Bike arraylist to delete from", bikeList);
 		
 		//After adding 1 item, test if the size of the list is 1
@@ -261,11 +261,7 @@ public class C206_CaseStudyTest {
 	}
 	@Test 
 	public void testUpdateBikePartInformation() { 
-		// i haven't complete it yet and resulting in failure due to incomplete codes  - putri 
-		AppMain.addBikePart(bikePartList, part1);
-		AppMain.addBikePart(bikePartList, part2);
-		AppMain.addBikePart(bikePartList, part3);
-		AppMain.addBikePart(bikePartList, part4);
+
 		// Bike part list is not null, so that we can update a new bike part information
 		assertNotNull("Test if there is a valid BikePart ArrayList to update information from", bikePartList);
 		
@@ -317,29 +313,16 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testUpdateAppointment() {
-	// Test if the appointent is updated successfully...
-
+	public void testsearchBike() {
+		//Test that bikeList must not be Null so that we can iterate through the bikeList and find the bike item information
+		assertNotNull("Test if bikeList is not null", bikeList);
 	}
 	@Test
-	public void deleteFeedback() {
-		//Test if the Feedback is deleted successfully...
-		//Test if feedbackList is not null
-		assertNotNull("Test if there is a valid feedbackList to delete from", feedbackList);
-		//After adding 1 item, test if the size of the list is 1
-				AppMain.addFeedback(feedbackList, feed1);
-				assertEquals("Test if that feedback arraylist size is 1?", 1, feedbackList.size());
-				
-				//Delete the item, and test if the size of the list is 0
-				AppMain.deleteFeedback(feedbackList); //Requires user input (B001) in console
-				assertEquals("Test if that feedback arraylist size is 0?", 0, feedbackList.size());	
-		
+	public void testsearchBikeParts() {
+		//Test that bikePartList must not be Null so that we can iterate through the bikePartList and find the bike part item information
+		assertNotNull("Test if bikePartList is not null", bikePartList);
 	}
-	@Test 
-	public void respondCustomerFeedback() {
-		//Test if the FeedBack is responded sucessfully...
-		
-	}
+	
 	@After
 	public void tearDown() throws Exception {
 		bike1 = null;
