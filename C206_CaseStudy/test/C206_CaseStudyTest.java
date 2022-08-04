@@ -313,6 +313,14 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if buyer can be registered", buyerList);
 	}
 	
+	@Test
+	public void testReadBuyerInfo() {
+		//type here...
+		// Test that admin can read buyer information.
+		assertNotNull("Test if buyer's information can be read", buyerList);
+	}
+	
+	
 	public void testSearchAppointmentByID() {
 		//type here...
 		// Test that the appointment by id is inside, reflected when search.
