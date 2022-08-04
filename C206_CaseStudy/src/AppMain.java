@@ -369,7 +369,7 @@ public class AppMain {
 			}
 		}
 		
-		if (noResult == false) { // if id found...
+		if (noResult == false) { // if id found..
 			for (int i = 0; i < bikeList.size(); i++) {
 				if (bikeList.get(i).getId().equals(id)) {
 					char confirm = Helper.readChar("Are you sure you want to delete record "+id+" (y/n) > ");

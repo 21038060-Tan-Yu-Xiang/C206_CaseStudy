@@ -215,7 +215,7 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testDeleteBike() {
-		//Item list is not null, so that we can delete a new item
+		//Item list is not null, so that we can delete new item
 		assertNotNull("Test if there is a valid Bike arraylist to delete from", bikeList);
 		
 		//After adding 1 item, test if the size of the list is 1
