@@ -265,6 +265,12 @@ public class C206_CaseStudyTest {
 		// Bike part list is not null, so that we can update a new bike part information
 		assertNotNull("Test if there is a valid BikePart ArrayList to update information from", bikePartList);
 		
+		// Add bikeParts to test
+		AppMain.addBikePart(bikePartList, part1);
+		AppMain.addBikePart(bikePartList, part2);
+		AppMain.addBikePart(bikePartList, part3);
+		AppMain.addBikePart(bikePartList, part4);
+		
 		//Test if the list of the Bike Part is filled at the start so that there can be an update. 
 		//To have an update, Bike Part list cannot be empty.
 		assertEquals("Check that bikePartList ArrayList is 4 and not empty", 4, bikePartList.size());
