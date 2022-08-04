@@ -45,7 +45,7 @@ public class AppMain {
 			mainMenu();
 			option = Helper.readInt("Enter an option > ");
 			
-			if (option == 1) { //////////////////// Manage Inventory (Unverified: Update BikePartList)
+			if (option == 1) { //////////////////// Manage Inventory (Section Completed)
 				setHeader("Manage Inventory");
 				System.out.println("1. View Inventory");
 				System.out.println("2. Add Item");
@@ -79,7 +79,7 @@ public class AppMain {
 						viewAllBikes(bikeList);
 						updateBike(bikeList);
 					}
-					else if (itemoption == 2) { 
+					else if (itemoption == 2) { //Verified
 						viewAllBikeParts(bikePartList);
 						updateBikePart(bikePartList);
 					}
@@ -158,9 +158,9 @@ public class AppMain {
 					System.out.println("## Not Coded ##");
 					//TODO
 				}
-				else if (suboption == 4) {
-					System.out.println("## Not Coded ##");
-					//TODO
+				else if (suboption == 4) { // not verified 
+					viewAllAppointments(appointmentList);
+					deleteAppointment(appointmentList);					
 				}
 				else if (suboption == 5) { //Verified
 					searchAppointmentByID(appointmentList);
@@ -320,8 +320,6 @@ public class AppMain {
 			System.out.println("ID entered was not found in the records.");
 		}
 	}
-	
-	
 	public static void updateBikePart(ArrayList<BikePart> bikePartList) {
 		String id = Helper.readString("enter id to update > ");
 		
@@ -419,51 +417,6 @@ public class AppMain {
 		}
 	}
 	
-	//================================ (Search) Bike & Bike Parts ================================
-	public static void searchBike(ArrayList<Bike> bikeList) {
-		String id= Helper.readString("Enter Bike ID to search > ");
-		//Done by Damien
-		// search if id exists for the item
-		//isF stands for is Found?
-		for(int x=0;x<bikeList.size();x++) {
-			boolean isF = false;
-			if(bikeList.get(x).getId()==id) {
-				isF=true;
-				System.out.println("Bike ID > " + bikeList.get(x).getId());
-				System.out.println("Bike Name >" + bikeList.get(x).getName());
-				System.out.println("Bike Frame Material > " + bikeList.get(x).getFrameMaterial());
-				System.out.println("Bike Price" + bikeList.get(x).getPrice());
-				System.out.println("Bike Availability > " + bikeList.get(x).getIsAvailable());
-			}
-			if(bikeList.get(x).getId() != id) {
-				isF=false;
-				System.out.println("Bike not found or does not exist.");
-			}
-		}
-	}
-	public static void sBP(ArrayList<BikePart> bikePartList) {
-		//Done by Damien
-		//sBP stands for Search Bike Parts
-		String id= Helper.readString("Enter Bike Part ID to search > ");
-		//iterate through the arrayList to find the items
-		for(int z=0; z<bikePartList.size();z++) {
-			//isF2 stands for is Found(Second) for Bike Part
-			boolean isF2=true;
-			if(bikePartList.get(z).getId()==id) {
-				isF2=true;
-				//What to display after getting bike item info 
-				System.out.println("Bike Part ID > " + bikePartList.get(z).getId());
-				System.out.println("Bike Part Name > " + bikePartList.get(z).getName());
-				System.out.println("Bike Part Price > " + bikePartList.get(z).getPrice());
-				System.out.println("Bike Part Availability > " + bikePartList.get(z).getIsAvailable());
-			}
-			if(bikePartList.get(z).getId()!= id) {
-				isF2= false;
-				//What to display if no such item can be found
-				System.out.println("Bike Part either not found or does not exist");
-			}
-		}
-	}
 	//================================ (Create) Buyer Profiles ===================================
 	public static Buyer inputBuyer() {
 		String id = Helper.readString("Enter id > ");
@@ -629,6 +582,30 @@ public class AppMain {
 	}
 	//================================ (Update) Appointment =======================================
 	//================================ (Delete) Appointment =======================================
+	public static void deleteAppointment(ArrayList<Appointment> appointmentList) {
+		String id = Helper.readString("Enter id to delete > ");
+		
+		boolean noResult = true; // search if id exist 
+		for (int i =0; i < appointmentList.size(); i++) {
+			if (appointmentList.get(i).getId().equals(id)) {
+				noResult = false;
+			}
+		}
+		if (noResult == false) { // there is no id found
+			for (int i =0; i < appointmentList.size(); i++) {
+				if (appointmentList.get(i).getId().equals(id)) {
+					char confirm = Helper.readChar("Are you sure you want to delete record " +id+" (y/n) > ");
+					if (Character.toLowerCase(confirm) == 'y') {
+						appointmentList.remove(i);
+						System.out.println("Record " +id+" has been deleted successfully.");
+					} else { 
+						System.out.println("User has cancelled deletion.");
+					}
+				}
+			}
+
+		}
+	}
 	//================================ (Search) Appointment =======================================
 	public static void searchAppointmentByID(ArrayList<Appointment> appointmentList) {
 		
