@@ -320,6 +320,20 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if buyer's information can be read", buyerList);
 	}
 	
+	@Test 
+	public void testDeleteBuyer() {
+		// buyer list is not null, so that we can delete a new buyer 
+		assertNotNull("Test if there is a valid buyer ArrayList to delete from", buyerList);
+		
+		//After adding 1 buyer, test if the size of the list is 1
+		AppMain.addBuyer(buyerList, buyer1); 
+		assertEquals("Test if that buyer ArrayList size is 1?", 1, buyerList.size());
+		
+		//Delete the item, and test if the size of the list is 0
+		AppMain.deleteBuyer(buyerList); // Requires user input (A001) in console 
+		assertEquals("Test if that buyer ArrayList size is 0?", 0, buyerList.size());	
+	}
+	
 	
 	public void testSearchAppointmentByID() {
 		//type here...
