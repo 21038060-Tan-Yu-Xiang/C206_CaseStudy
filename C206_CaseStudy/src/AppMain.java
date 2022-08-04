@@ -447,7 +447,7 @@ public class AppMain {
 		String id= Helper.readString("Enter Bike Part ID to search > ");
 		//iterate through the arrayList to find the items
 		for(int z=0; z<bikePartList.size();z++) {
-			//isF2 stands for is Found(Second) for Bike Parts
+			//isF2 stands for is Found(Second) for Bike Part
 			boolean isF2=true;
 			if(bikePartList.get(z).getId()==id) {
 				isF2=true;
